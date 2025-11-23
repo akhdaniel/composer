@@ -36,6 +36,7 @@
             <field name="arch" type="xml">
                 <form string="Actor">
                     <header>
+                        <button string="Generate Actor" type="object" name="action_generate_actor" />
                         <button string="Reload" type="object" name="action_reload_view" icon="fa-refresh"/>
                     </header>
                     <sheet>

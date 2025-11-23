@@ -10,7 +10,7 @@ class actor(models.Model):
     _description = "vit.actor"
 
 
-    def generate_actor(self, ):
+    def action_generate_actor(self, ):
         pass
 
 

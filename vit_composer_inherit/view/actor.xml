@@ -1,0 +1,30 @@
+view_vit_actor_form
+<odoo>
+    <data>
+
+        <record id="view_actor_form" model="ir.ui.view">
+            <field name="name">actor_form</field>
+            <field name="model">vit.actor</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="vit_composer.view_vit_actor_form"/>
+            <field name="arch" type="xml">
+                
+                <notebook position="inside">
+                    <page string="Images">
+                        <group>
+                            <field name="image_prompt"/>
+                            <field name="image_url"/><button name="download_image" type="object" string="Download Image"/>
+                            <field name="image_png" widget="image"/>
+                        </group>
+                    </page>
+                    <page string="Videos">
+                        <group>
+                            <field name="video_url" />
+                            <field name="video_mp4" />
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</odoo>

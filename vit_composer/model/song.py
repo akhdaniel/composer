@@ -26,6 +26,10 @@ class song(models.Model):
         pass
 
 
+    def action_download_capcut(self, ):
+        pass
+
+
     def action_reload_view(self):
         pass
 
