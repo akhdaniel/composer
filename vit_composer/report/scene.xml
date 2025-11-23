@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <record id="action_report_vit_scene" model="ir.actions.report">
+            <field name="name">Scene</field>
+            <field name="model">vit.scene</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">vit_composer.vit_scene_report</field>
+            <field name="report_file">vit_composer.vit_scene_report</field>
+            <field name="print_report_name">object.name</field>
+            <field name="binding_model_id" ref="vit_composer.model_vit_scene"/>
+            <field name="binding_type">report</field>
+        </record>
+        <!-- document template -->
+        <template id="vit_composer.vit_scene_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Scene: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Description</strong>
+                            <p class="m-0" t-field="doc.description" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Start</strong>
+                            <p class="m-0" t-field="doc.start" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>End</strong>
+                            <p class="m-0" t-field="doc.end" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Duration</strong>
+                            <p class="m-0" t-field="doc.duration" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Image Prompt</strong>
+                            <p class="m-0" t-field="doc.image_prompt" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Video Url</strong>
+                            <p class="m-0" t-field="doc.video_url" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Video Mp4</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Video Mp4 Filename</strong>
+                            <p class="m-0" t-field="doc.video_mp4_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Image Url</strong>
+                            <p class="m-0" t-field="doc.image_url" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Image Png</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Image Png Filename</strong>
+                            <p class="m-0" t-field="doc.image_png_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Actor</strong>
+                            <p class="m-0" t-field="doc.actor_ids"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Song</strong>
+                            <p class="m-0" t-field="doc.song_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="vit_composer.vit_scene_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="vit_composer.vit_scene_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

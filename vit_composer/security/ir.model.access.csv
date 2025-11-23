@@ -1,0 +1,13 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_user_vit_song,access_user_vit_song,model_vit_song,vit_composer.group_song_and_clip_composer_user,1,0,0,0
+access_manager_vit_song,access_manager_vit_song,model_vit_song,vit_composer.group_song_and_clip_composer_manager,1,1,1,1
+access_admin_vit_song,access_admin_vit_song,model_vit_song,base.group_system,1,1,1,1
+access_user_vit_scene,access_user_vit_scene,model_vit_scene,vit_composer.group_song_and_clip_composer_user,1,0,0,0
+access_manager_vit_scene,access_manager_vit_scene,model_vit_scene,vit_composer.group_song_and_clip_composer_manager,1,1,1,1
+access_admin_vit_scene,access_admin_vit_scene,model_vit_scene,base.group_system,1,1,1,1
+access_user_vit_gpt_model,access_user_vit_gpt_model,model_vit_gpt_model,vit_composer.group_song_and_clip_composer_user,1,0,0,0
+access_manager_vit_gpt_model,access_manager_vit_gpt_model,model_vit_gpt_model,vit_composer.group_song_and_clip_composer_manager,1,1,1,1
+access_admin_vit_gpt_model,access_admin_vit_gpt_model,model_vit_gpt_model,base.group_system,1,1,1,1
+access_user_vit_actor,access_user_vit_actor,model_vit_actor,vit_composer.group_song_and_clip_composer_user,1,0,0,0
+access_manager_vit_actor,access_manager_vit_actor,model_vit_actor,vit_composer.group_song_and_clip_composer_manager,1,1,1,1
+access_admin_vit_actor,access_admin_vit_actor,model_vit_actor,base.group_system,1,1,1,1

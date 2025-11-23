@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_vit_actor_tree" model="ir.ui.view">
+            <field name="name">vit_actor_tree</field>
+            <field name="model">vit.actor</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <list string="Actor">
+                    <field name="name" /> <!-- 100-->
+                    <field name="song_id" /> <!-- 100-->
+                    <field name="image" widget="image"/> <!-- 101-->
+                    <field name="image_prompt" /> <!-- 102-->
+                    <field name="image_url" /> <!-- 103-->
+                </list>
+            </field>
+        </record>
+        <!-- pivot view -->
+        <record id="view_vit_actor_pivot" model="ir.ui.view">
+            <field name="name">vit_actor_tree</field>
+            <field name="model">vit.actor</field>
+            <field name="type">pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Actor">
+                    <field name="song_id" type="row"/>
+                </pivot>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_vit_actor_form" model="ir.ui.view">
+            <field name="name">vit_actor_form</field>
+            <field name="model">vit.actor</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Actor">
+                    <header>
+                        <button string="Reload" type="object" name="action_reload_view" icon="fa-refresh"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Actor Name"/>
+                            <h1><field name="name" /></h1>
+                        </div>
+                        <group>
+                            <group> <!-- left -->
+                                <field name="image" widget="image" />
+                                <field name="image_prompt"  />
+                                <field name="image_url"  />
+                            </group>
+                            <group> <!-- right -->
+                                <field name="song_id"  />
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                        <group name="note_group" col="6" class="mt-2 mt-md-0">
+                            <group colspan="4">
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                            </group>
+                            <div class="clearfix"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_vit_actor_search" model="ir.ui.view">
+            <field name="name">vit_actor</field>
+            <field name="model">vit.actor</field>
+            <field name="arch" type="xml">
+                <search string="Actor">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Image" name="filter_by_image" domain="[('image','=','')]" />
+                    <filter string="Image Prompt" name="filter_by_image_prompt" domain="[('image_prompt','=','')]" />
+                    <filter string="Image Url" name="filter_by_image_url" domain="[('image_url','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="image" select="True"/>
+                    <field name="image_prompt" select="True"/>
+                    <field name="image_url" select="True"/>
+                    <field name="song_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Song" domain="[]" name="group_by_song_id" context="{'group_by':'song_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image, image_512, image_1920, or image_small in the model -->
+        <record id="view_vit_actor_kanban" model="ir.ui.view" >
+            <field name="name">vit_actor</field>
+            <field name="model">vit.actor</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <templates>
+                        <t t-name="card" class="flex-row">
+                            <aside class="o_kanban_image m-2">
+                                <field name="image" widget="image" alt="Rooms" options="{'img_class': 'w-100 object-fit-contain'}" invisible="not image"/>
+                            </aside>
+                            <main class="p-2">
+                                <h4>
+                                    <a type="open"><field name="name"/></a>
+                                </h4>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_vit_actor_graph" model="ir.ui.view">
+            <field name="name">vit_actor</field>
+            <field name="model">vit.actor</field>
+            <field name="arch" type="xml">
+                <graph string="Actor" type="bar">
+                    <field name="song_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_actor" model="ir.actions.act_window">
+            <field name="name">Actor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vit.actor</field>
+            <field name="view_mode">list,form,kanban,pivot,graph</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Actor
+                </p><p>
+
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_actor" name="Actor" parent="vit_composer_config_menu" action="action_actor" sequence="50"/>
+    </data>
+</odoo>

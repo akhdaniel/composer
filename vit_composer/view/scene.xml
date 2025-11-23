@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_vit_scene_tree" model="ir.ui.view">
+            <field name="name">vit_scene_tree</field>
+            <field name="model">vit.scene</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <list string="Scene">
+                    <field name="name" /> <!-- 100-->
+                    <field name="description" /> <!-- 101-->
+                    <field name="song_id" /> <!-- 101-->
+                    <field name="start" /> <!-- 102-->
+                    <field name="end" /> <!-- 103-->
+                    <field name="duration" /> <!-- 104-->
+                </list>
+            </field>
+        </record>
+        <!-- pivot view -->
+        <record id="view_vit_scene_pivot" model="ir.ui.view">
+            <field name="name">vit_scene_tree</field>
+            <field name="model">vit.scene</field>
+            <field name="type">pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Scene">
+                    <field name="song_id" type="row"/>
+                </pivot>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_vit_scene_form" model="ir.ui.view">
+            <field name="name">vit_scene_form</field>
+            <field name="model">vit.scene</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Scene">
+                    <header>
+                        <button string="Generate Image" type="object" name="action_generate_image" />
+                        <button string="Generate Video" type="object" name="action_generate_video" />
+                        <button string="Reload" type="object" name="action_reload_view" icon="fa-refresh"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Scene Name"/>
+                            <h1><field name="name" /></h1>
+                        </div>
+                        <group>
+                            <group> <!-- left -->
+                                <field name="description"  />
+                                <field name="start"  />
+                                <field name="end"  />
+                                <field name="duration"  />
+                                <field name="image_prompt"  />
+                                <field name="video_url"  />
+                                <field name="video_mp4" filename="video_mp4_filename" />
+                                <field name="video_mp4_filename" invisible="True" />
+                                <field name="image_url"  />
+                                <field name="image_png" filename="image_png_filename" />
+                                <field name="image_png_filename" invisible="True" />
+                            </group>
+                            <group> <!-- right -->
+                                <field name="actor_ids" domain="[('song_id','=',song_id)]" widget="many2many_tags" />
+                                <field name="song_id"  />
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                        <group name="note_group" col="6" class="mt-2 mt-md-0">
+                            <group colspan="4">
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                            </group>
+                            <div class="clearfix"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_vit_scene_search" model="ir.ui.view">
+            <field name="name">vit_scene</field>
+            <field name="model">vit.scene</field>
+            <field name="arch" type="xml">
+                <search string="Scene">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Description" name="filter_by_description" domain="[('description','=','')]" />
+                    <filter string="Start" name="filter_by_start" domain="[('start','=','')]" />
+                    <filter string="End" name="filter_by_end" domain="[('end','=','')]" />
+                    <filter string="Duration" name="filter_by_duration" domain="[('duration','=','')]" />
+                    <filter string="Image Prompt" name="filter_by_image_prompt" domain="[('image_prompt','=','')]" />
+                    <filter string="Video Url" name="filter_by_video_url" domain="[('video_url','=','')]" />
+                    <filter string="Video Mp4" name="filter_by_video_mp4" domain="[('video_mp4','=','')]" />
+                    <filter string="Video Mp4 Filename" name="filter_by_video_mp4_filename" domain="[('video_mp4_filename','=','')]" />
+                    <filter string="Image Url" name="filter_by_image_url" domain="[('image_url','=','')]" />
+                    <filter string="Image Png" name="filter_by_image_png" domain="[('image_png','=','')]" />
+                    <filter string="Image Png Filename" name="filter_by_image_png_filename" domain="[('image_png_filename','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="description" select="True"/>
+                    <field name="start" select="True"/>
+                    <field name="end" select="True"/>
+                    <field name="duration" select="True"/>
+                    <field name="image_prompt" select="True"/>
+                    <field name="video_url" select="True"/>
+                    <field name="video_mp4" select="True"/>
+                    <field name="video_mp4_filename" select="True"/>
+                    <field name="image_url" select="True"/>
+                    <field name="image_png" select="True"/>
+                    <field name="image_png_filename" select="True"/>
+                    <field name="song_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Song" domain="[]" name="group_by_song_id" context="{'group_by':'song_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image, image_512, image_1920, or image_small in the model -->
+        <record id="view_vit_scene_kanban" model="ir.ui.view" >
+            <field name="name">vit_scene</field>
+            <field name="model">vit.scene</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <templates>
+                        <t t-name="card" class="flex-row">
+                            <main class="p-2">
+                                <h4>
+                                    <a type="open"><field name="name"/></a>
+                                </h4>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_vit_scene_graph" model="ir.ui.view">
+            <field name="name">vit_scene</field>
+            <field name="model">vit.scene</field>
+            <field name="arch" type="xml">
+                <graph string="Scene" type="bar">
+                    <field name="song_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_scene" model="ir.actions.act_window">
+            <field name="name">Scene</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vit.scene</field>
+            <field name="view_mode">list,form,kanban,pivot,graph</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Scene
+                </p><p>
+
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_scene" name="Scene" parent="vit_composer_config_menu" action="action_scene" sequence="30"/>
+    </data>
+</odoo>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <record id="action_report_vit_song" model="ir.actions.report">
+            <field name="name">Song</field>
+            <field name="model">vit.song</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">vit_composer.vit_song_report</field>
+            <field name="report_file">vit_composer.vit_song_report</field>
+            <field name="print_report_name">object.name</field>
+            <field name="binding_model_id" ref="vit_composer.model_vit_song"/>
+            <field name="binding_type">report</field>
+        </record>
+        <!-- document template -->
+        <template id="vit_composer.vit_song_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Song: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Prompt</strong>
+                            <p class="m-0" t-field="doc.prompt" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Lyrics</strong>
+                            <p class="m-0" t-field="doc.lyrics" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Duration</strong>
+                            <p class="m-0" t-field="doc.duration" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Url</strong>
+                            <p class="m-0" t-field="doc.url" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Song Mp3</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Song Mp3 Filename</strong>
+                            <p class="m-0" t-field="doc.song_mp3_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Gpt Model</strong>
+                            <p class="m-0" t-field="doc.gpt_model_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+                <h2>Actor</h2>
+                <table class="table table-sm o_main_table" name="actor_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Image</td>
+                            <td>Image Prompt</td>
+                            <td>Image Url</td>
+                            <td>Song</td>
+                        </tr>
+                    </thead>
+                    <tbody class="actor_ids_tbody">
+                        <tr t-foreach="doc.actor_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.image" /></td>
+                            <td><span t-field="line.image_prompt" /></td>
+                            <td><span t-field="line.image_url" /></td>
+                            <td><span t-field="line.song_id" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+                <h2>Scene</h2>
+                <table class="table table-sm o_main_table" name="scene_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Description</td>
+                            <td>Start</td>
+                            <td>End</td>
+                            <td>Duration</td>
+                            <td>Image Prompt</td>
+                            <td>Video Url</td>
+                            <td>Video Mp4</td>
+                            <td>Video Mp4 Filename</td>
+                            <td>Image Url</td>
+                            <td>Image Png</td>
+                            <td>Image Png Filename</td>
+                            <td>Actor</td>
+                            <td>Song</td>
+                        </tr>
+                    </thead>
+                    <tbody class="scene_ids_tbody">
+                        <tr t-foreach="doc.scene_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.description" /></td>
+                            <td><span t-field="line.start" /></td>
+                            <td><span t-field="line.end" /></td>
+                            <td><span t-field="line.duration" /></td>
+                            <td><span t-field="line.image_prompt" /></td>
+                            <td><span t-field="line.video_url" /></td>
+                            <td><span t-field="line.video_mp4" /></td>
+                            <td><span t-field="line.video_mp4_filename" /></td>
+                            <td><span t-field="line.image_url" /></td>
+                            <td><span t-field="line.image_png" /></td>
+                            <td><span t-field="line.image_png_filename" /></td>
+                            <td><span t-field="line.actor_ids" /></td>
+                            <td><span t-field="line.song_id" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="vit_composer.vit_song_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="vit_composer.vit_song_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

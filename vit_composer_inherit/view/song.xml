@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <!--record id="view_song_tree" model="ir.ui.view">
+            <field name="name">song_tree</field>
+            <field name="model">vit.song</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="vit_composer.view_vit_song_tree"/>
+            <field name="arch" type="xml">
+            </field>
+        </record-->
+        <!-- form view -->
+        <record id="view_song_form" model="ir.ui.view">
+            <field name="name">song_form</field>
+            <field name="model">vit.song</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="vit_composer.view_vit_song_form"/>
+            <field name="arch" type="xml">
+                <field name="lyrics" position="replace"/>
+                <field name="url" position="replace"/>
+                <field name="song_mp3" position="replace"/>
+                <field name="song_mp3_filename" position="replace"/>
+                <xpath expr="//notebook/page[@name='actor_ids']" position="before">
+                    <page string="Song Details">
+                        <group>
+                            <group>
+                                <field name="lyrics"/>
+                                <field name="url"/>
+                            </group>
+                            <group>
+                                <field name="song_mp3"/>
+                                <field name="song_mp3_filename" invisible="True"/>
+                            </group>
+                        </group>
+                    </page>
+                    <!-- <page string="Actors">
+                        <group>
+                            <group>
+                                <field name="actor1_image_prompt"/>
+                                <field name="actor1_image_url"/>
+                                <field name="actor1_image" widget="image" options="{'width':500}"/>
+                                <button name="generate_actor1" type="object" string="Generate Actor 1"/>
+                            </group>    
+                            <group>
+                                <field name="actor2_image_prompt" />
+                                <field name="actor2_image_url" />
+                                <field name="actor2_image" widget="image" options="{'width':500}"/>
+                                <button name="generate_actor2" type="object" string="Generate Actor 2"/>
+                            </group>                    
+                        </group>                    
+                    </page> -->
+                </xpath>
+            </field>
+        </record>
+        <!-- search -->
+        <!--record id="view_song_search" model="ir.ui.view">
+            <field name="name">song</field>
+            <field name="model">vit.song</field>
+            <field name="inherit_id" ref="vit_composer.view_vit_song_search"/>
+            <field name="arch" type="xml">
+            </field>
+        </record-->
+        <!-- action window -->
+        <!--record id="vit_composer.action_song" model="ir.actions.act_window">
+            <field name="name">Song</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vit.song</field>
+            <field name="view_mode">tree,form,kanban,pivot</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Song
+                </p><p>
+
+                </p>
+            </field>
+        </record-->
+
+        <!-- <menuitem id="menu_song" name="Song" parent="vit_composer_config_menu" action="action_song" sequence="20"/> -->
+    </data>
+</odoo>

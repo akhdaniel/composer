@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_vit_song_tree" model="ir.ui.view">
+            <field name="name">vit_song_tree</field>
+            <field name="model">vit.song</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <list string="Song">
+                    <field name="name" /> <!-- 100-->
+                    <field name="gpt_model_id" /> <!-- 100-->
+                    <field name="prompt" /> <!-- 101-->
+                    <field name="duration" /> <!-- 103-->
+                </list>
+            </field>
+        </record>
+        <!-- pivot view -->
+        <record id="view_vit_song_pivot" model="ir.ui.view">
+            <field name="name">vit_song_tree</field>
+            <field name="model">vit.song</field>
+            <field name="type">pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Song">
+                    <field name="gpt_model_id" type="row"/>
+                </pivot>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_vit_song_form" model="ir.ui.view">
+            <field name="name">vit_song_form</field>
+            <field name="model">vit.song</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Song">
+                    <header>
+                        <button string="Generate Song" type="object" name="action_generate_song" />
+                        <button string="Generate Scenes" type="object" name="action_generate_scenes" />
+                        <button string="Generate Scene Images" type="object" name="action_generate_scene_images" />
+                        <button string="Generate Scene Videos" type="object" name="action_generate_scene_videos" />
+                        <button string="Reload" type="object" name="action_reload_view" icon="fa-refresh"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Song Name"/>
+                            <h1><field name="name" /></h1>
+                        </div>
+                        <group>
+                            <group> <!-- left -->
+                                <field name="prompt"  />
+                                <field name="lyrics"  />
+                                <field name="duration"  />
+                                <field name="url"  />
+                                <field name="song_mp3" filename="song_mp3_filename" />
+                                <field name="song_mp3_filename"  />
+                            </group>
+                            <group> <!-- right -->
+                                <field name="gpt_model_id"  />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="actor_ids" string="Actor">
+                                <field name="actor_ids" >
+                                    <list >
+                                        <field name="name" /> <!-- 100-->
+                                        <field name="image" widget="image"/> <!-- 101-->
+                                        <field name="image_prompt" /> <!-- 102-->
+                                        <field name="image_url" /> <!-- 103-->
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="scene_ids" string="Scene">
+                                <field name="scene_ids" >
+                                    <list >
+                                        <field name="name" /> <!-- 100-->
+                                        <field name="description" /> <!-- 101-->
+                                        <field name="start" /> <!-- 102-->
+                                        <field name="end" /> <!-- 103-->
+                                        <field name="duration" /> <!-- 104-->
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                        <group name="note_group" col="6" class="mt-2 mt-md-0">
+                            <group colspan="4">
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                            </group>
+                            <div class="clearfix"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_vit_song_search" model="ir.ui.view">
+            <field name="name">vit_song</field>
+            <field name="model">vit.song</field>
+            <field name="arch" type="xml">
+                <search string="Song">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Prompt" name="filter_by_prompt" domain="[('prompt','=','')]" />
+                    <filter string="Lyrics" name="filter_by_lyrics" domain="[('lyrics','=','')]" />
+                    <filter string="Duration" name="filter_by_duration" domain="[('duration','=','')]" />
+                    <filter string="Url" name="filter_by_url" domain="[('url','=','')]" />
+                    <filter string="Song Mp3" name="filter_by_song_mp3" domain="[('song_mp3','=','')]" />
+                    <filter string="Song Mp3 Filename" name="filter_by_song_mp3_filename" domain="[('song_mp3_filename','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="prompt" select="True"/>
+                    <field name="lyrics" select="True"/>
+                    <field name="duration" select="True"/>
+                    <field name="url" select="True"/>
+                    <field name="song_mp3" select="True"/>
+                    <field name="song_mp3_filename" select="True"/>
+                    <field name="gpt_model_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Gpt Model" domain="[]" name="group_by_gpt_model_id" context="{'group_by':'gpt_model_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image, image_512, image_1920, or image_small in the model -->
+        <record id="view_vit_song_kanban" model="ir.ui.view" >
+            <field name="name">vit_song</field>
+            <field name="model">vit.song</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <templates>
+                        <t t-name="card" class="flex-row">
+                            <main class="p-2">
+                                <h4>
+                                    <a type="open"><field name="name"/></a>
+                                </h4>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_vit_song_graph" model="ir.ui.view">
+            <field name="name">vit_song</field>
+            <field name="model">vit.song</field>
+            <field name="arch" type="xml">
+                <graph string="Song" type="bar">
+                    <field name="gpt_model_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_song" model="ir.actions.act_window">
+            <field name="name">Song</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vit.song</field>
+            <field name="view_mode">list,form,kanban,pivot,graph</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Song
+                </p><p>
+
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_song" name="Song" parent="vit_composer_config_menu" action="action_song" sequence="20"/>
+    </data>
+</odoo>

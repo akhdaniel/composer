@@ -1,0 +1,7 @@
+<odoo>
+	<data>
+		<menuitem id="vit_composer_top_menu" name="Song and Clip Composer" sequence="20" web_icon="vit_composer,static/description/icon.png" />
+		<menuitem id="vit_composer_sub_menu" name="Operations" sequence="40" parent="vit_composer_top_menu" />
+		<menuitem id="vit_composer_config_menu" name="Configurations" sequence="1000" parent="vit_composer_top_menu" />
+	</data>
+</odoo>
