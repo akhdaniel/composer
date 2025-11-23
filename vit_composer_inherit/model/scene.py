@@ -20,7 +20,7 @@ class scene(models.Model):
 
         if self.actor_ids:
             actor = self.actor_ids[0]
-            base_url =self.env["ir.config_parameter"].sudo().get_param("web.base_url")
+            base_url =self.env["ir.config_parameter"].sudo().get_param("web.base.url")
             ref_image = f"{base_url}/web/image/vit.actor/{actor.id}/image?unique=1763886100000"
 
         image_url = ws.generate_image(
