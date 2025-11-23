@@ -16,16 +16,16 @@ class scene(models.Model):
     def action_generate_image(self, ):
         api_key = self.env["ir.config_parameter"].sudo().get_param("wavespeed_api_key")
         ws = Wavespeed(api_key=api_key)
-        ref_image=None
+        ref_image=[]
 
         if self.actor_ids:
             actor = self.actor_ids[0]
             base_url =self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-            ref_image = f"{base_url}/web/image/vit.actor/{actor.id}/image?unique=1763886100000"
+            ref_image.append(f"{base_url}/web/image/vit.actor/{actor.id}/image?unique=1763886100000")
 
         image_url = ws.generate_image(
             image_prompt=self.image_prompt,
-            model_name='wavespeed-ai/flux-krea-dev-lora',
+            model_name='bytedance/seedream-v4/edit',
             reference_image_url=ref_image)
         
         self.image_url = image_url

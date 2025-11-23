@@ -79,7 +79,7 @@ class Wavespeed:
             }
         if reference_image_url:
             additional_payload.update({
-                'image': reference_image_url
+                'images': reference_image_url
             })
             
         url = self.generate(
