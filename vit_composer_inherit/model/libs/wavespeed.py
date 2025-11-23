@@ -3,15 +3,17 @@ import os
 import requests
 import json
 import time
+import logging
+_logger = logging.getLogger(__name__)
 
 class Wavespeed:
     def __init__(self, api_key=None):
         self.api_key=api_key
 
     def generate(self, model_name, prompt, additional_payload={} ):
-        print(f"    model: {model_name}")
-        print(f"    prompt: {prompt}")
-        print(f"    payload: {additional_payload}")
+        _logger.info(f"    model: {model_name}")
+        _logger.info(f"    prompt: {prompt}")
+        _logger.info(f"    payload: {additional_payload}")
 
         url = f"https://api.wavespeed.ai/api/v3/{model_name}"
         headers = {
@@ -32,9 +34,9 @@ class Wavespeed:
         if response.status_code == 200:
             result = response.json()["data"]
             request_id = result["id"]
-            print(f"    Task submitted. Request ID: {request_id}")
+            _logger.info(f"    Task submitted. Request ID: {request_id}")
         else:
-            print(f"    Error: {response.status_code}, {response.text}")
+            _logger.info(f"    Error: {response.status_code}, {response.text}")
             return
 
         url = f"https://api.wavespeed.ai/api/v3/predictions/{request_id}/result"
@@ -49,17 +51,17 @@ class Wavespeed:
 
                 if status == "completed":
                     end = time.time()
-                    print(f"    Task completed in {end - begin} seconds.")
+                    _logger.info(f"    Task completed in {end - begin} seconds.")
                     final_url = result["outputs"][0]
-                    print(f"    URL: {final_url}")
+                    _logger.info(f"    URL: {final_url}")
                     break
                 elif status == "failed":
-                    print(f"    Task failed: {result.get('error')}")
+                    _logger.info(f"    Task failed: {result.get('error')}")
                     break
                 else:
-                    print(f"    Task still processing. Status: {status}")
+                    _logger.info(f"    Task still processing. Status: {status}")
             else:
-                print(f"    Error: {response.status_code}, {response.text}")
+                _logger.info(f"    Error: {response.status_code}, {response.text}")
                 break
 
             time.sleep(1)
@@ -67,7 +69,7 @@ class Wavespeed:
         return final_url
 
     def generate_image(self, image_prompt, model_name='google/nano-banana/text-to-image',additional_payload={}, reference_image_url=None):
-        print('Generating image...')
+        _logger.info('Generating image...')
         if not additional_payload:
             additional_payload={
                 "aspect_ratio": "9:16",
@@ -86,11 +88,11 @@ class Wavespeed:
             additional_payload=additional_payload
         )
         
-        print('    Final Image URL', url)
+        _logger.info('    Final Image URL', url)
         return url
 
     def generate_audio(self, text, model_name='elevenlabs/eleven-v3', voice_id="Alice"):
-        print('Generating audio...')
+        _logger.info('Generating audio...')
 
         url = self.generate(
             model_name=model_name,
@@ -102,11 +104,11 @@ class Wavespeed:
                 "use_speaker_boost": True,
                 "voice_id": voice_id
             })
-        print('    Final Audio URL', url)
+        _logger.info('    Final Audio URL', url)
         return url
 
     def generate_music(self, music_prompt, lyrics="", model_name='minimax/music-02',):
-        print('Generating song...')
+        _logger.info('Generating song...')
 
         url = self.generate(
             model_name=model_name,
@@ -117,11 +119,11 @@ class Wavespeed:
                 "sample_rate": 44100
             }            
         )
-        print('    Final Music URL', url)
+        _logger.info('    Final Music URL', url)
         return url
 
     def generate_video(self, video_prompt, model_name='bytedance/seedance-v1-pro-fast/text-to-video', duration=5):
-        print('Generating video...')
+        _logger.info('Generating video...')
         url = self.generate(
             model_name=model_name,
             prompt=video_prompt,
@@ -133,7 +135,7 @@ class Wavespeed:
                 "seed": -1
             }
         )
-        print('    Final Video URL', url)
+        _logger.info('    Final Video URL', url)
         return url
 
 if __name__ == "__main__":
@@ -147,4 +149,4 @@ if __name__ == "__main__":
         }
     )
     url = wavespeed.generate()
-    print('Final URL', url)
+    _logger.info('Final URL', url)
