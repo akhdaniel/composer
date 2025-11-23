@@ -19,9 +19,9 @@ class actor(models.Model):
         self.image_url = image_url
         self.download_image()
 
-    def download_image(self, field_name):
+    def download_image(self):
         for rec in self:
-            image_url = self.image_url
+            image_url = rec.image_url
             if not image_url :
                 continue
 
@@ -29,7 +29,7 @@ class actor(models.Model):
                 response = requests.get(image_url, timeout=10)
                 if response.status_code == 200:
                     # response.content sudah berupa bytes
-                    setattr(rec, field_name, base64.b64encode(response.content))
+                    rec.image = base64.b64encode(response.content)
                 else:
                     # optional: log error / raise warning
                     raise UserError(
