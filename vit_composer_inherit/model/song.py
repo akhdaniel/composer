@@ -143,6 +143,7 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
         # self.song_clips_zip_url = download_url
 
         # Redirect browser to download
+        _logger.info(download_url)
         return {
             "type": "ir.actions.act_url",
             "url": download_url,
