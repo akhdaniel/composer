@@ -135,8 +135,9 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
             f.write(zip_buffer.getvalue())
 
         # Generate public URL
-        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-        download_url = f"{base_url}/songs/{zip_filename}"
+        # base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
+        ip_addrs = '147.139.134.170'
+        download_url = f"http://{ip_addrs}/songs/{zip_filename}"
 
         # Store the URL in the record
         # self.song_clips_zip_url = download_url
