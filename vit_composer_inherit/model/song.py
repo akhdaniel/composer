@@ -121,7 +121,7 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
 
         # Prepare filename
         zip_filename = f"{self.name.replace(' ', '_')}-song_clips.zip"
-        server_path = f"/var/www/html/{zip_filename}"
+        server_path = f"/var/www/html/songs/{zip_filename}"
 
         # Write to physical file
         with open(server_path, "wb") as f:
