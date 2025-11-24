@@ -30,10 +30,6 @@ class song(models.Model):
         pass
 
 
-    def action_download_capcut(self, ):
-        pass
-
-
     @api.depends("song_mp3")
     def _get_song_url(self, ):
         """
@@ -41,6 +37,18 @@ class song(models.Model):
         "@api.depends":["song_mp3"]
         }
         """
+        pass
+
+
+    def action_download_scenes(self, ):
+        pass
+
+
+    def action_download_song_clips(self, ):
+        pass
+
+
+    def action_download_capcut(self, ):
         pass
 
 

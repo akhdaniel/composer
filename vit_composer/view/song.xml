@@ -41,6 +41,8 @@
                         <button string="Generate Scenes" type="object" name="action_generate_scenes" />
                         <button string="Generate Scene Images" type="object" name="action_generate_scene_images" />
                         <button string="Generate Scene Videos" type="object" name="action_generate_scene_videos" />
+                        <button string="Download Scenes" type="object" name="action_download_scenes" />
+                        <button string="Download Song Clips" type="object" name="action_download_song_clips" />
                         <button string="Download Capcut" type="object" name="action_download_capcut" />
                         <button string="Reload" type="object" name="action_reload_view" icon="fa-refresh"/>
                     </header>
