@@ -140,7 +140,7 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
         download_url = f"{host}/{zip_filename}"
 
         # Store the URL in the record
-        self.song_clips_zip_url = download_url
+        # self.song_clips_zip_url = download_url
 
         # Redirect browser to download
         return {
