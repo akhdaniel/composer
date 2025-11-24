@@ -98,7 +98,7 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
 
     def action_download_capcut(self, ):
         self.zip_song_clips()
-        self.zip_scenes()
+        # self.zip_scenes()
 
     def zip_song_clips(self, ):
         # collect all clips
@@ -119,19 +119,43 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
                     # write inside ZIP
                     zipf.writestr(filename, mp3_data)
 
-        # prepare zip for download
-        zip_filename = f"{self.name}-song_clips.zip"
-        zip_data = zip_buffer.getvalue()
-        zip_b64 = base64.b64encode(zip_data)
-        self.song_clips_zip = zip_b64
-        self.song_clips_zip_filename = zip_filename
+        # Prepare filename
+        zip_filename = f"{self.name.replace(' ', '_')}-song_clips.zip"
+        server_path = f"/var/www/html/{zip_filename}"
 
-        # force download using ir.actions.act_url
+        # Write to physical file
+        with open(server_path, "wb") as f:
+            f.write(zip_buffer.getvalue())
+
+        # Generate public URL
+        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
+        host,port = base_url.split(":")
+        download_url = f"{host}/{zip_filename}"
+
+        # Store the URL in the record
+        self.song_clips_zip_url = download_url
+
+        # Redirect browser to download
         return {
             "type": "ir.actions.act_url",
-            "url": f"/web/content/vit.song/{self.id}/song_clips_zip/{zip_filename}",
+            "url": download_url,
             "target": "self",
         }
+        
+        
+        # # prepare zip for download
+        # zip_filename = f"{self.name}-song_clips.zip"
+        # zip_data = zip_buffer.getvalue()
+        # zip_b64 = base64.b64encode(zip_data)
+        # self.song_clips_zip = zip_b64
+        # self.song_clips_zip_filename = zip_filename
+
+        # # force download using ir.actions.act_url
+        # return {
+        #     "type": "ir.actions.act_url",
+        #     "url": f"/web/content/vit.song/{self.id}/song_clips_zip/{zip_filename}",
+        #     "target": "self",
+        # }
 
     def zip_scenes(self, ):
         # collect all clips
