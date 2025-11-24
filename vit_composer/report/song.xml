@@ -34,8 +34,8 @@
                             <p class="m-0" t-field="doc.duration" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
-                            <strong>Url</strong>
-                            <p class="m-0" t-field="doc.url" />
+                            <strong>Original Url</strong>
+                            <p class="m-0" t-field="doc.original_url" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
                             <strong>Song Mp3</strong>
@@ -43,6 +43,10 @@
                         <div class="col-auto mw-100 mb-2">
                             <strong>Song Mp3 Filename</strong>
                             <p class="m-0" t-field="doc.song_mp3_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Song Mp3 Url</strong>
+                            <p class="m-0" t-field="doc.song_mp3_url" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
                             <strong>Gpt Model</strong>
@@ -82,6 +86,7 @@
                             <td>Start</td>
                             <td>End</td>
                             <td>Duration</td>
+                            <td>Lip Sync</td>
                             <td>Image Prompt</td>
                             <td>Video Url</td>
                             <td>Video Mp4</td>
@@ -89,8 +94,10 @@
                             <td>Image Url</td>
                             <td>Image Png</td>
                             <td>Image Png Filename</td>
+                            <td>Clip Names</td>
                             <td>Actor</td>
                             <td>Song</td>
+                            <td>Song Clip</td>
                         </tr>
                     </thead>
                     <tbody class="scene_ids_tbody">
@@ -100,6 +107,7 @@
                             <td><span t-field="line.start" /></td>
                             <td><span t-field="line.end" /></td>
                             <td><span t-field="line.duration" /></td>
+                            <td><span t-field="line.lip_sync" /></td>
                             <td><span t-field="line.image_prompt" /></td>
                             <td><span t-field="line.video_url" /></td>
                             <td><span t-field="line.video_mp4" /></td>
@@ -107,7 +115,33 @@
                             <td><span t-field="line.image_url" /></td>
                             <td><span t-field="line.image_png" /></td>
                             <td><span t-field="line.image_png_filename" /></td>
+                            <td><span t-field="line.clip_names" /></td>
                             <td><span t-field="line.actor_ids" /></td>
+                            <td><span t-field="line.song_id" /></td>
+                            <td><span t-field="line.song_clip_ids" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+                <h2>Song Clip</h2>
+                <table class="table table-sm o_main_table" name="song_clip_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Clip Mp3</td>
+                            <td>Clip Mp3 Filename</td>
+                            <td>Clip Mp3 Url</td>
+                            <td>Scene Names</td>
+                            <td>Song</td>
+                        </tr>
+                    </thead>
+                    <tbody class="song_clip_ids_tbody">
+                        <tr t-foreach="doc.song_clip_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.clip_mp3" /></td>
+                            <td><span t-field="line.clip_mp3_filename" /></td>
+                            <td><span t-field="line.clip_mp3_url" /></td>
+                            <td><span t-field="line.scene_names" /></td>
                             <td><span t-field="line.song_id" /></td>
                         </tr> <!-- foreach-->
                     </tbody>

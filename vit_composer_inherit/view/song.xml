@@ -18,18 +18,20 @@
             <field name="inherit_id" ref="vit_composer.view_vit_song_form"/>
             <field name="arch" type="xml">
                 <field name="lyrics" position="replace"/>
-                <field name="url" position="replace"/>
+                <field name="original_url" position="replace"/>
                 <field name="song_mp3" position="replace"/>
+                <field name="song_mp3_url" position="replace"/>
                 <field name="song_mp3_filename" position="replace"/>
                 <xpath expr="//notebook/page[@name='actor_ids']" position="before">
                     <page string="Song Details">
                         <group>
                             <group>
                                 <field name="lyrics"/>
-                                <field name="url"/>
                             </group>
                             <group>
-                                <field name="song_mp3"/>
+                                <field name="original_url" />
+                                <field name="song_mp3_url" widget="audio_player"/>
+                                <field name="song_mp3" filename="song_mp3_filename"/>
                                 <field name="song_mp3_filename" invisible="True"/>
                             </group>
                         </group>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <record id="action_report_vit_song_clip" model="ir.actions.report">
+            <field name="name">Song Clip</field>
+            <field name="model">vit.song_clip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">vit_composer.vit_song_clip_report</field>
+            <field name="report_file">vit_composer.vit_song_clip_report</field>
+            <field name="print_report_name">object.name</field>
+            <field name="binding_model_id" ref="vit_composer.model_vit_song_clip"/>
+            <field name="binding_type">report</field>
+        </record>
+        <!-- document template -->
+        <template id="vit_composer.vit_song_clip_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Song Clip: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Clip Mp3</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Clip Mp3 Filename</strong>
+                            <p class="m-0" t-field="doc.clip_mp3_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Clip Mp3 Url</strong>
+                            <p class="m-0" t-field="doc.clip_mp3_url" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Scene Names</strong>
+                            <p class="m-0" t-field="doc.scene_names" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Song</strong>
+                            <p class="m-0" t-field="doc.song_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+                <h2>Scene</h2>
+                <table class="table table-sm o_main_table" name="scene_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Description</td>
+                            <td>Start</td>
+                            <td>End</td>
+                            <td>Duration</td>
+                            <td>Lip Sync</td>
+                            <td>Image Prompt</td>
+                            <td>Video Url</td>
+                            <td>Video Mp4</td>
+                            <td>Video Mp4 Filename</td>
+                            <td>Image Url</td>
+                            <td>Image Png</td>
+                            <td>Image Png Filename</td>
+                            <td>Clip Names</td>
+                            <td>Actor</td>
+                            <td>Song</td>
+                            <td>Song Clip</td>
+                        </tr>
+                    </thead>
+                    <tbody class="scene_ids_tbody">
+                        <tr t-foreach="doc.scene_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.description" /></td>
+                            <td><span t-field="line.start" /></td>
+                            <td><span t-field="line.end" /></td>
+                            <td><span t-field="line.duration" /></td>
+                            <td><span t-field="line.lip_sync" /></td>
+                            <td><span t-field="line.image_prompt" /></td>
+                            <td><span t-field="line.video_url" /></td>
+                            <td><span t-field="line.video_mp4" /></td>
+                            <td><span t-field="line.video_mp4_filename" /></td>
+                            <td><span t-field="line.image_url" /></td>
+                            <td><span t-field="line.image_png" /></td>
+                            <td><span t-field="line.image_png_filename" /></td>
+                            <td><span t-field="line.clip_names" /></td>
+                            <td><span t-field="line.actor_ids" /></td>
+                            <td><span t-field="line.song_id" /></td>
+                            <td><span t-field="line.song_clip_ids" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="vit_composer.vit_song_clip_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="vit_composer.vit_song_clip_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

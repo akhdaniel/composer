@@ -13,6 +13,16 @@ class scene(models.Model):
     _name = "vit.scene"
     _inherit = "vit.scene"
 
+    @api.depends("song_clip_ids")
+    def _get_clip_names(self, ):
+        """
+        {
+        "@api.depends":["song_clip_ids"]
+        }
+        """
+        for rec in self:
+            rec.clip_names = ", ".join(rec.song_clip_ids.mapped('name'))
+            
     def action_generate_image(self, ):
         api_key = self.env["ir.config_parameter"].sudo().get_param("wavespeed_api_key")
         ws = Wavespeed(api_key=api_key)

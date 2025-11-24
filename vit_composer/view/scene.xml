@@ -14,6 +14,8 @@
                     <field name="start" /> <!-- 102-->
                     <field name="end" /> <!-- 103-->
                     <field name="duration" /> <!-- 104-->
+                    <field name="lip_sync" /> <!-- 105-->
+                    <field name="clip_names" /> <!-- 113-->
                 </list>
             </field>
         </record>
@@ -58,6 +60,7 @@
                                 <field name="start"  />
                                 <field name="end"  />
                                 <field name="duration"  />
+                                <field name="lip_sync"  />
                                 <field name="image_prompt"  />
                                 <field name="video_url"  />
                                 <field name="video_mp4" filename="video_mp4_filename" />
@@ -65,10 +68,12 @@
                                 <field name="image_url"  />
                                 <field name="image_png" filename="image_png_filename" />
                                 <field name="image_png_filename" invisible="True" />
+                                <field name="clip_names"  />
                             </group>
                             <group> <!-- right -->
                                 <field name="actor_ids" domain="[('song_id','=',song_id)]" widget="many2many_tags" />
                                 <field name="song_id"  />
+                                <field name="song_clip_ids"  />
                             </group>
                         </group>
                         <notebook>
@@ -96,6 +101,7 @@
                     <filter string="Start" name="filter_by_start" domain="[('start','=','')]" />
                     <filter string="End" name="filter_by_end" domain="[('end','=','')]" />
                     <filter string="Duration" name="filter_by_duration" domain="[('duration','=','')]" />
+                    <filter string="Lip Sync" name="filter_by_lip_sync" domain="[('lip_sync','=','')]" />
                     <filter string="Image Prompt" name="filter_by_image_prompt" domain="[('image_prompt','=','')]" />
                     <filter string="Video Url" name="filter_by_video_url" domain="[('video_url','=','')]" />
                     <filter string="Video Mp4" name="filter_by_video_mp4" domain="[('video_mp4','=','')]" />
@@ -108,6 +114,7 @@
                     <field name="start" select="True"/>
                     <field name="end" select="True"/>
                     <field name="duration" select="True"/>
+                    <field name="lip_sync" select="True"/>
                     <field name="image_prompt" select="True"/>
                     <field name="video_url" select="True"/>
                     <field name="video_mp4" select="True"/>

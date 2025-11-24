@@ -14,6 +14,10 @@ class song(models.Model):
         pass
 
 
+    def action_split_song(self, ):
+        pass
+
+
     def action_generate_scenes(self, ):
         pass
 
@@ -30,6 +34,16 @@ class song(models.Model):
         pass
 
 
+    @api.depends("song_mp3")
+    def _get_song_url(self, ):
+        """
+        {
+        "@api.depends":["song_mp3"]
+        }
+        """
+        pass
+
+
     def action_reload_view(self):
         pass
 
@@ -37,9 +51,10 @@ class song(models.Model):
     prompt = fields.Text( string=_("Prompt"))
     lyrics = fields.Text( string=_("Lyrics"))
     duration = fields.Float( string=_("Duration"))
-    url = fields.Text( string=_("Url"))
+    original_url = fields.Char( string=_("Original Url"))
     song_mp3 = fields.Binary( string=_("Song Mp3"))
     song_mp3_filename = fields.Char( string=_("Song Mp3 Filename"))
+    song_mp3_url = fields.Char(compute="_get_song_url",  string=_("Song Mp3 Url"))
 
 
     def copy(self, default=None):
@@ -52,3 +67,4 @@ class song(models.Model):
     gpt_model_id = fields.Many2one(comodel_name="vit.gpt_model",  string=_("Gpt Model"))
     actor_ids = fields.One2many(comodel_name="vit.actor",  inverse_name="song_id",  string=_("Actor"))
     scene_ids = fields.One2many(comodel_name="vit.scene",  inverse_name="song_id",  string=_("Scene"))
+    song_clip_ids = fields.One2many(comodel_name="vit.song_clip",  inverse_name="song_id",  string=_("Song Clip"))

@@ -22,6 +22,16 @@ class scene(models.Model):
         pass
 
 
+    @api.depends("song_clip_ids")
+    def _get_clip_names(self, ):
+        """
+        {
+        "@api.depends":["song_clip_ids"]
+        }
+        """
+        pass
+
+
     def action_reload_view(self):
         pass
 
@@ -30,6 +40,7 @@ class scene(models.Model):
     start = fields.Float( string=_("Start"))
     end = fields.Float( string=_("End"))
     duration = fields.Float( string=_("Duration"))
+    lip_sync = fields.Boolean( string=_("Lip Sync"))
     image_prompt = fields.Text( string=_("Image Prompt"))
     video_url = fields.Text( string=_("Video Url"))
     video_mp4 = fields.Binary( string=_("Video Mp4"))
@@ -37,6 +48,7 @@ class scene(models.Model):
     image_url = fields.Text( string=_("Image Url"))
     image_png = fields.Binary( string=_("Image Png"))
     image_png_filename = fields.Char( string=_("Image Png Filename"))
+    clip_names = fields.Char(compute="_get_clip_names",  string=_("Clip Names"))
 
 
     def copy(self, default=None):
@@ -48,3 +60,4 @@ class scene(models.Model):
 
     actor_ids = fields.Many2many(comodel_name="vit.actor",  string=_("Actor"))
     song_id = fields.Many2one(comodel_name="vit.song",  string=_("Song"))
+    song_clip_ids = fields.Many2many(comodel_name="vit.song_clip",  string=_("Song Clip"))

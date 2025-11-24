@@ -12,6 +12,7 @@
                     <field name="gpt_model_id" /> <!-- 100-->
                     <field name="prompt" /> <!-- 101-->
                     <field name="duration" /> <!-- 103-->
+                    <field name="song_mp3_url" /> <!-- 107-->
                 </list>
             </field>
         </record>
@@ -36,6 +37,7 @@
                 <form string="Song">
                     <header>
                         <button string="Generate Song" type="object" name="action_generate_song" />
+                        <button string="Split Song" type="object" name="action_split_song" />
                         <button string="Generate Scenes" type="object" name="action_generate_scenes" />
                         <button string="Generate Scene Images" type="object" name="action_generate_scene_images" />
                         <button string="Generate Scene Videos" type="object" name="action_generate_scene_videos" />
@@ -58,9 +60,10 @@
                                 <field name="prompt"  />
                                 <field name="lyrics"  />
                                 <field name="duration"  />
-                                <field name="url"  />
+                                <field name="original_url"  />
                                 <field name="song_mp3" filename="song_mp3_filename" />
                                 <field name="song_mp3_filename"  />
+                                <field name="song_mp3_url"  />
                             </group>
                             <group> <!-- right -->
                                 <field name="gpt_model_id"  />
@@ -85,6 +88,17 @@
                                         <field name="start" /> <!-- 102-->
                                         <field name="end" /> <!-- 103-->
                                         <field name="duration" /> <!-- 104-->
+                                        <field name="lip_sync" /> <!-- 105-->
+                                        <field name="clip_names" /> <!-- 113-->
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="song_clip_ids" string="Song Clip">
+                                <field name="song_clip_ids" >
+                                    <list >
+                                        <field name="name" /> <!-- 100-->
+                                        <field name="clip_mp3_url" widget="audio_player"/> <!-- 103-->
+                                        <field name="scene_names" /> <!-- 104-->
                                     </list>
                                 </field>
                             </page>
@@ -111,14 +125,14 @@
                     <filter string="Prompt" name="filter_by_prompt" domain="[('prompt','=','')]" />
                     <filter string="Lyrics" name="filter_by_lyrics" domain="[('lyrics','=','')]" />
                     <filter string="Duration" name="filter_by_duration" domain="[('duration','=','')]" />
-                    <filter string="Url" name="filter_by_url" domain="[('url','=','')]" />
+                    <filter string="Original Url" name="filter_by_original_url" domain="[('original_url','=','')]" />
                     <filter string="Song Mp3" name="filter_by_song_mp3" domain="[('song_mp3','=','')]" />
                     <filter string="Song Mp3 Filename" name="filter_by_song_mp3_filename" domain="[('song_mp3_filename','=','')]" />
                     <field name="name" select="True"/>
                     <field name="prompt" select="True"/>
                     <field name="lyrics" select="True"/>
                     <field name="duration" select="True"/>
-                    <field name="url" select="True"/>
+                    <field name="original_url" select="True"/>
                     <field name="song_mp3" select="True"/>
                     <field name="song_mp3_filename" select="True"/>
                     <field name="gpt_model_id" select="True"/>

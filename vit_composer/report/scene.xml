@@ -38,6 +38,10 @@
                             <p class="m-0" t-field="doc.duration" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
+                            <strong>Lip Sync</strong>
+                            <p class="m-0" t-field="doc.lip_sync" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
                             <strong>Image Prompt</strong>
                             <p class="m-0" t-field="doc.image_prompt" />
                         </div>
@@ -64,12 +68,20 @@
                             <p class="m-0" t-field="doc.image_png_filename" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
+                            <strong>Clip Names</strong>
+                            <p class="m-0" t-field="doc.clip_names" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
                             <strong>Actor</strong>
                             <p class="m-0" t-field="doc.actor_ids"/>
                         </div>
                         <div class="col-auto mw-100 mb-2">
                             <strong>Song</strong>
                             <p class="m-0" t-field="doc.song_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Song Clip</strong>
+                            <p class="m-0" t-field="doc.song_clip_ids"/>
                         </div>
                     </div>
                 </div>

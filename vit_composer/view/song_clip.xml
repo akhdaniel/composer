@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_vit_song_clip_tree" model="ir.ui.view">
+            <field name="name">vit_song_clip_tree</field>
+            <field name="model">vit.song_clip</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <list string="Song Clip">
+                    <field name="name" /> <!-- 100-->
+                    <field name="clip_mp3_url" widget="audio_player"/> <!-- 103-->
+                    <field name="scene_names" /> <!-- 104-->
+                </list>
+            </field>
+        </record>
+        <!-- pivot view -->
+        <record id="view_vit_song_clip_pivot" model="ir.ui.view">
+            <field name="name">vit_song_clip_tree</field>
+            <field name="model">vit.song_clip</field>
+            <field name="type">pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Song Clip">
+                    <field name="song_id" type="row"/>
+                </pivot>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_vit_song_clip_form" model="ir.ui.view">
+            <field name="name">vit_song_clip_form</field>
+            <field name="model">vit.song_clip</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Song Clip">
+                    <header>
+                        <button string="Reload" type="object" name="action_reload_view" icon="fa-refresh"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Song Clip Name"/>
+                            <h1><field name="name" /></h1>
+                        </div>
+                        <group>
+                            <group> <!-- left -->
+                                <field name="clip_mp3" filename="clip_mp3_filename" />
+                                <field name="clip_mp3_filename"  />
+                                <field name="clip_mp3_url" widget="audio_player" />
+                                <field name="scene_names"  />
+                            </group>
+                            <group> <!-- right -->
+                                <field name="song_id"  />
+                                <field name="scene_ids"  />
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                        <group name="note_group" col="6" class="mt-2 mt-md-0">
+                            <group colspan="4">
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                            </group>
+                            <div class="clearfix"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_vit_song_clip_search" model="ir.ui.view">
+            <field name="name">vit_song_clip</field>
+            <field name="model">vit.song_clip</field>
+            <field name="arch" type="xml">
+                <search string="Song Clip">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Clip Mp3" name="filter_by_clip_mp3" domain="[('clip_mp3','=','')]" />
+                    <filter string="Clip Mp3 Filename" name="filter_by_clip_mp3_filename" domain="[('clip_mp3_filename','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="clip_mp3" select="True"/>
+                    <field name="clip_mp3_filename" select="True"/>
+                    <field name="song_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Song" domain="[]" name="group_by_song_id" context="{'group_by':'song_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image, image_512, image_1920, or image_small in the model -->
+        <record id="view_vit_song_clip_kanban" model="ir.ui.view" >
+            <field name="name">vit_song_clip</field>
+            <field name="model">vit.song_clip</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <templates>
+                        <t t-name="card" class="flex-row">
+                            <main class="p-2">
+                                <h4>
+                                    <a type="open"><field name="name"/></a>
+                                </h4>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_vit_song_clip_graph" model="ir.ui.view">
+            <field name="name">vit_song_clip</field>
+            <field name="model">vit.song_clip</field>
+            <field name="arch" type="xml">
+                <graph string="Song Clip" type="bar">
+                    <field name="song_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_song_clip" model="ir.actions.act_window">
+            <field name="name">Song Clip</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vit.song_clip</field>
+            <field name="view_mode">list,form,kanban,pivot,graph</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Song Clip
+                </p><p>
+
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_song_clip" name="Song Clip" parent="vit_composer_config_menu" action="action_song_clip" sequence="60"/>
+    </data>
+</odoo>

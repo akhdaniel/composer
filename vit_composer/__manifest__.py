@@ -28,7 +28,9 @@
 		"view/gpt_model.xml",
 		"report/gpt_model.xml",
 		"view/actor.xml",
-		"report/actor.xml"
+		"report/actor.xml",
+		"view/song_clip.xml",
+		"report/song_clip.xml"
 	],
 	"installable": True,
 	"auto_install": False,

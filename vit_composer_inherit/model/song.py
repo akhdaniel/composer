@@ -6,6 +6,7 @@ from odoo.exceptions import UserError
 import json
 from .libs.openai_lib import *
 from .libs.wavespeed import Wavespeed
+from .libs.audio_splitter import AudioSplitterBase64
 import requests
 import base64
 import logging
@@ -15,9 +16,33 @@ class song(models.Model):
     _name = "vit.song"
     _inherit = "vit.song"
 
+    @api.depends("song_mp3")
+    def _get_song_url(self, ):
+        """
+        {
+        "@api.depends":["song_mp3"]
+        }
+        """
+        base_url =self.env["ir.config_parameter"].sudo().get_param("web.base.url")
+        for rec in self:
+            rec.song_mp3_url = f"{base_url}/web/image/vit.song/{rec.id}/song_mp3?unique=1763886100000"
+
+
+
     def action_generate_song(self, ):
         pass
 
+    def action_split_song(self, ):
+        splitter = AudioSplitterBase64(self.song_mp3, chunk_length=10)
+        files = splitter.split()
+        print("Generated chunks:")
+        clips = []
+        for i,f in enumerate(files):
+            clips.append((0,0,{
+                'name': f'Clip {i}',
+                'clip_mp3': f
+            }))
+        self.song_clip_ids = clips
 
     def action_generate_scenes(self, ):
         context = self.lyrics
