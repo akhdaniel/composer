@@ -9,6 +9,9 @@ from .libs.wavespeed import Wavespeed
 from .libs.audio_splitter import AudioSplitterBase64
 import requests
 import base64
+import io
+import zipfile
+
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -93,3 +96,72 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
         self.scene_ids = scene_ids
 
 
+    def action_download_capcut(self, ):
+        self.zip_song_clips()
+        self.zip_scenes()
+
+    def zip_song_clips(self, ):
+        # collect all clips
+        records = self.song_clip_ids
+
+        # create in-memory zip
+        zip_buffer = io.BytesIO()
+
+        with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zipf:
+            for rec in records:
+                if rec.clip_mp3:
+                    # get binary data
+                    mp3_data = base64.b64decode(rec.clip_mp3)
+
+                    # define a file name inside zip
+                    filename = f"{rec.name}.mp3"
+
+                    # write inside ZIP
+                    zipf.writestr(filename, mp3_data)
+
+        # prepare zip for download
+        zip_filename = f"{self.name}-song_clips.zip"
+        zip_data = zip_buffer.getvalue()
+        zip_b64 = base64.b64encode(zip_data)
+        self.song_clips_zip = zip_b64
+        self.song_clips_zip_filename = zip_filename
+
+        # force download using ir.actions.act_url
+        return {
+            "type": "ir.actions.act_url",
+            "url": f"/web/content/vit.song/{self.id}/song_clips_zip/{zip_filename}",
+            "target": "self",
+        }
+
+    def zip_scenes(self, ):
+        # collect all clips
+        records = self.scene_ids
+
+        # create in-memory zip
+        zip_buffer = io.BytesIO()
+
+        with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zipf:
+            for rec in records:
+                if rec.image_png:
+                    # get binary data
+                    mp3_data = base64.b64decode(rec.image_png)
+
+                    # define a file name inside zip
+                    filename = f"{rec.name}.png"
+
+                    # write inside ZIP
+                    zipf.writestr(filename, mp3_data)
+
+        # prepare zip for download
+        zip_filename = f"{self.name}-scenes.zip"
+        zip_data = zip_buffer.getvalue()
+        zip_b64 = base64.b64encode(zip_data)
+        self.scenes_zip = zip_b64
+        self.scenes_zip_filename = zip_filename
+
+        # force download using ir.actions.act_url
+        return {
+            "type": "ir.actions.act_url",
+            "url": f"/web/content/vit.song/{self.id}/scenes_zip/{zip_filename}",
+            "target": "self",
+        }

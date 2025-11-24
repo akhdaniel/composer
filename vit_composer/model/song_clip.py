@@ -47,5 +47,5 @@ class song_clip(models.Model):
         })
         return super(song_clip, self).copy(default)
 
-    song_id = fields.Many2one(comodel_name="vit.song",  string=_("Song"))
     scene_ids = fields.Many2many(comodel_name="vit.scene",  string=_("Scene"))
+    song_id = fields.Many2one(comodel_name="vit.song",  string=_("Song"))

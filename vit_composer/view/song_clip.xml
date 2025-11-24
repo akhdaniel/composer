@@ -55,8 +55,8 @@
                                 <field name="scene_names"  />
                             </group>
                             <group> <!-- right -->
-                                <field name="song_id"  />
                                 <field name="scene_ids"  />
+                                <field name="song_id"  />
                             </group>
                         </group>
                         <notebook>

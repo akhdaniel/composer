@@ -62,24 +62,18 @@
                                 <field name="duration"  />
                                 <field name="original_url"  />
                                 <field name="song_mp3" filename="song_mp3_filename" />
-                                <field name="song_mp3_filename"  />
+                                <field name="song_mp3_filename" invisible="True" />
                                 <field name="song_mp3_url"  />
+                                <field name="song_clips_zip" filename="song_clips_zip_filename" />
+                                <field name="song_clips_zip_filename" invisible="True" />
+                                <field name="scenes_zip" filename="scenes_zip_filename" />
+                                <field name="scenes_zip_filename" invisible="True" />
                             </group>
                             <group> <!-- right -->
                                 <field name="gpt_model_id"  />
                             </group>
                         </group>
                         <notebook>
-                            <page name="actor_ids" string="Actor">
-                                <field name="actor_ids" >
-                                    <list >
-                                        <field name="name" /> <!-- 100-->
-                                        <field name="image" widget="image"/> <!-- 101-->
-                                        <field name="image_prompt" /> <!-- 102-->
-                                        <field name="image_url" /> <!-- 103-->
-                                    </list>
-                                </field>
-                            </page>
                             <page name="scene_ids" string="Scene">
                                 <field name="scene_ids" >
                                     <list >
@@ -90,6 +84,16 @@
                                         <field name="duration" /> <!-- 104-->
                                         <field name="lip_sync" /> <!-- 105-->
                                         <field name="clip_names" /> <!-- 113-->
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="actor_ids" string="Actor">
+                                <field name="actor_ids" >
+                                    <list >
+                                        <field name="name" /> <!-- 100-->
+                                        <field name="image" widget="image"/> <!-- 101-->
+                                        <field name="image_prompt" /> <!-- 102-->
+                                        <field name="image_url" /> <!-- 103-->
                                     </list>
                                 </field>
                             </page>
@@ -128,6 +132,10 @@
                     <filter string="Original Url" name="filter_by_original_url" domain="[('original_url','=','')]" />
                     <filter string="Song Mp3" name="filter_by_song_mp3" domain="[('song_mp3','=','')]" />
                     <filter string="Song Mp3 Filename" name="filter_by_song_mp3_filename" domain="[('song_mp3_filename','=','')]" />
+                    <filter string="Song Clips Zip" name="filter_by_song_clips_zip" domain="[('song_clips_zip','=','')]" />
+                    <filter string="Song Clips Zip Filename" name="filter_by_song_clips_zip_filename" domain="[('song_clips_zip_filename','=','')]" />
+                    <filter string="Scenes Zip" name="filter_by_scenes_zip" domain="[('scenes_zip','=','')]" />
+                    <filter string="Scenes Zip Filename" name="filter_by_scenes_zip_filename" domain="[('scenes_zip_filename','=','')]" />
                     <field name="name" select="True"/>
                     <field name="prompt" select="True"/>
                     <field name="lyrics" select="True"/>
@@ -135,6 +143,10 @@
                     <field name="original_url" select="True"/>
                     <field name="song_mp3" select="True"/>
                     <field name="song_mp3_filename" select="True"/>
+                    <field name="song_clips_zip" select="True"/>
+                    <field name="song_clips_zip_filename" select="True"/>
+                    <field name="scenes_zip" select="True"/>
+                    <field name="scenes_zip_filename" select="True"/>
                     <field name="gpt_model_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Gpt Model" domain="[]" name="group_by_gpt_model_id" context="{'group_by':'gpt_model_id'}"/>

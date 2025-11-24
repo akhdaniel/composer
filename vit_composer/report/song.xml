@@ -49,33 +49,25 @@
                             <p class="m-0" t-field="doc.song_mp3_url" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
+                            <strong>Song Clips Zip</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Song Clips Zip Filename</strong>
+                            <p class="m-0" t-field="doc.song_clips_zip_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Scenes Zip</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Scenes Zip Filename</strong>
+                            <p class="m-0" t-field="doc.scenes_zip_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
                             <strong>Gpt Model</strong>
                             <p class="m-0" t-field="doc.gpt_model_id"/>
                         </div>
                     </div>
                 </div>
-                <div class="oe_structure"/>
-                <h2>Actor</h2>
-                <table class="table table-sm o_main_table" name="actor_ids_table">
-                    <thead>
-                        <tr>
-                            <td>Name</td>
-                            <td>Image</td>
-                            <td>Image Prompt</td>
-                            <td>Image Url</td>
-                            <td>Song</td>
-                        </tr>
-                    </thead>
-                    <tbody class="actor_ids_tbody">
-                        <tr t-foreach="doc.actor_ids" t-as="line">
-                            <td><span t-field="line.name" /></td>
-                            <td><span t-field="line.image" /></td>
-                            <td><span t-field="line.image_prompt" /></td>
-                            <td><span t-field="line.image_url" /></td>
-                            <td><span t-field="line.song_id" /></td>
-                        </tr> <!-- foreach-->
-                    </tbody>
-                </table>
                 <div class="oe_structure"/>
                 <h2>Scene</h2>
                 <table class="table table-sm o_main_table" name="scene_ids_table">
@@ -119,6 +111,28 @@
                             <td><span t-field="line.actor_ids" /></td>
                             <td><span t-field="line.song_id" /></td>
                             <td><span t-field="line.song_clip_ids" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+                <h2>Actor</h2>
+                <table class="table table-sm o_main_table" name="actor_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Image</td>
+                            <td>Image Prompt</td>
+                            <td>Image Url</td>
+                            <td>Song</td>
+                        </tr>
+                    </thead>
+                    <tbody class="actor_ids_tbody">
+                        <tr t-foreach="doc.actor_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.image" /></td>
+                            <td><span t-field="line.image_prompt" /></td>
+                            <td><span t-field="line.image_url" /></td>
+                            <td><span t-field="line.song_id" /></td>
                         </tr> <!-- foreach-->
                     </tbody>
                 </table>
