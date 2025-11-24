@@ -136,8 +136,8 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
 
         # Generate public URL
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-        host,port = base_url.split(":")
-        download_url = f"{host}/{zip_filename}"
+        http,host,port = base_url.split(":")
+        download_url = f"{http}{host}/{zip_filename}"
 
         # Store the URL in the record
         # self.song_clips_zip_url = download_url
