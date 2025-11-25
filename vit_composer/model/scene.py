@@ -42,13 +42,15 @@ class scene(models.Model):
     duration = fields.Float( string=_("Duration"))
     lip_sync = fields.Boolean( string=_("Lip Sync"))
     image_prompt = fields.Text( string=_("Image Prompt"))
-    video_url = fields.Text( string=_("Video Url"))
-    video_mp4 = fields.Binary( string=_("Video Mp4"))
-    video_mp4_filename = fields.Char( string=_("Video Mp4 Filename"))
     image_url = fields.Text( string=_("Image Url"))
     image_png = fields.Binary( string=_("Image Png"))
     image_png_filename = fields.Char( string=_("Image Png Filename"))
+    video_prompt = fields.Text( string=_("Video Prompt"))
+    video_url = fields.Text( string=_("Video Url"))
+    video_mp4 = fields.Binary( string=_("Video Mp4"))
+    video_mp4_filename = fields.Char( string=_("Video Mp4 Filename"))
     clip_names = fields.Char(compute="_get_clip_names",  string=_("Clip Names"))
+    lyrics = fields.Text( string=_("Lyrics"))
 
 
     def copy(self, default=None):

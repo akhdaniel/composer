@@ -12,6 +12,7 @@
                     <field name="gpt_model_id" /> <!-- 100-->
                     <field name="prompt" /> <!-- 101-->
                     <field name="duration" /> <!-- 103-->
+                    <field name="prompt_id" /> <!-- 104-->
                     <field name="song_mp3_url" /> <!-- 107-->
                 </list>
             </field>
@@ -24,6 +25,7 @@
             <field name="arch" type="xml">
                 <pivot string="Song">
                     <field name="gpt_model_id" type="row"/>
+                    <field name="prompt_id" type="row"/>
                 </pivot>
             </field>
         </record>
@@ -41,8 +43,6 @@
                         <button string="Generate Scenes" type="object" name="action_generate_scenes" />
                         <button string="Generate Scene Images" type="object" name="action_generate_scene_images" />
                         <button string="Generate Scene Videos" type="object" name="action_generate_scene_videos" />
-                        <button string="Download Scenes" type="object" name="action_download_scenes" />
-                        <button string="Download Song Clips" type="object" name="action_download_song_clips" />
                         <button string="Download Capcut" type="object" name="action_download_capcut" />
                         <button string="Reload" type="object" name="action_reload_view" icon="fa-refresh"/>
                     </header>
@@ -73,6 +73,7 @@
                             </group>
                             <group> <!-- right -->
                                 <field name="gpt_model_id"  />
+                                <field name="prompt_id"  />
                             </group>
                         </group>
                         <notebook>
@@ -85,7 +86,8 @@
                                         <field name="end" /> <!-- 103-->
                                         <field name="duration" /> <!-- 104-->
                                         <field name="lip_sync" /> <!-- 105-->
-                                        <field name="clip_names" /> <!-- 113-->
+                                        <field name="clip_names" /> <!-- 114-->
+                                        <field name="lyrics" /> <!-- 115-->
                                     </list>
                                 </field>
                             </page>
@@ -150,8 +152,10 @@
                     <field name="scenes_zip" select="True"/>
                     <field name="scenes_zip_filename" select="True"/>
                     <field name="gpt_model_id" select="True"/>
+                    <field name="prompt_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Gpt Model" domain="[]" name="group_by_gpt_model_id" context="{'group_by':'gpt_model_id'}"/>
+                        <filter string="Prompt" domain="[]" name="group_by_prompt_id" context="{'group_by':'prompt_id'}"/>
                     </group>
                 </search>
             </field>

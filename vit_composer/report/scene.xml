@@ -46,17 +46,6 @@
                             <p class="m-0" t-field="doc.image_prompt" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
-                            <strong>Video Url</strong>
-                            <p class="m-0" t-field="doc.video_url" />
-                        </div>
-                        <div class="col-auto mw-100 mb-2">
-                            <strong>Video Mp4</strong>
-                        </div>
-                        <div class="col-auto mw-100 mb-2">
-                            <strong>Video Mp4 Filename</strong>
-                            <p class="m-0" t-field="doc.video_mp4_filename" />
-                        </div>
-                        <div class="col-auto mw-100 mb-2">
                             <strong>Image Url</strong>
                             <p class="m-0" t-field="doc.image_url" />
                         </div>
@@ -68,8 +57,27 @@
                             <p class="m-0" t-field="doc.image_png_filename" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
+                            <strong>Video Prompt</strong>
+                            <p class="m-0" t-field="doc.video_prompt" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Video Url</strong>
+                            <p class="m-0" t-field="doc.video_url" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Video Mp4</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Video Mp4 Filename</strong>
+                            <p class="m-0" t-field="doc.video_mp4_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
                             <strong>Clip Names</strong>
                             <p class="m-0" t-field="doc.clip_names" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Lyrics</strong>
+                            <p class="m-0" t-field="doc.lyrics" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
                             <strong>Actor</strong>

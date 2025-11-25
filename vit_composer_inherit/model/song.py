@@ -50,24 +50,9 @@ class song(models.Model):
     def action_generate_scenes(self, ):
         context = self.lyrics
         additional_command=""
-        system_prompt = "You are a helpfull assistant"
+        system_prompt = self.prompt_id.system_prompt 
         question = ""
-        user_prompt = """Lirik lagu: {context} 
-{question}
-Buat data scenes untuk music video, dengan image prompt, start end frame dan durasi dalam detik.
-Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti ini contohnya, tanpa penjelasan di awal dan akhir:
-[
-    {{
-      "scene": "Opening",
-      "description": "Close-up penyanyi di kamar temaram, cahaya kuning lembut, ekspresi reflektif.",
-      "duration":"10",
-      "start":"0",
-      "end":"10",
-      "image_prompt": "cinematic close-up of a man sitting alone in a dim warm-lit bedroom, emotional eyes, film grain, shallow depth of field"
-    }},
-    ...
-]
-"""
+        user_prompt = self.prompt_id.user_prompt
         openai_api_key = self.env["ir.config_parameter"].sudo().get_param("openai_api_key")
         openai_base_url = self.env["ir.config_parameter"].sudo().get_param("openai_base_url", None)
 
@@ -84,6 +69,7 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
         scenes = json.loads(scenes)   
 
         scene_ids = []
+        self.scene_ids = scene_ids
         for scene in scenes:
             scene_ids.append((0,0,{
                 "name": scene['scene'],
@@ -92,6 +78,8 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
                 "start": scene['start'],
                 "end": scene['end'],
                 "image_prompt": scene['image_prompt'],
+                "video_prompt": scene['video_prompt'],
+                "lyrics": scene['lyrics'],
             }))
         self.scene_ids = scene_ids
 
@@ -197,3 +185,7 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
             "url": f"/web/content/vit.song/{self.id}/scenes_zip/{zip_filename}",
             "target": "self",
         }
+
+
+    def action_generate_scene_videos(self, ):
+        pass

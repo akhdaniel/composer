@@ -20,6 +20,7 @@
 	"description": "",
 	"data": [
         "security/ir.model.access.csv",
+        "data/prompt.xml",
         "data/params.xml",
 		"view/song.xml",
 		"view/scene.xml"

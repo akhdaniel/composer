@@ -54,13 +54,15 @@
                             <td>Duration</td>
                             <td>Lip Sync</td>
                             <td>Image Prompt</td>
-                            <td>Video Url</td>
-                            <td>Video Mp4</td>
-                            <td>Video Mp4 Filename</td>
                             <td>Image Url</td>
                             <td>Image Png</td>
                             <td>Image Png Filename</td>
+                            <td>Video Prompt</td>
+                            <td>Video Url</td>
+                            <td>Video Mp4</td>
+                            <td>Video Mp4 Filename</td>
                             <td>Clip Names</td>
+                            <td>Lyrics</td>
                             <td>Actor</td>
                             <td>Song</td>
                             <td>Song Clip</td>
@@ -75,13 +77,15 @@
                             <td><span t-field="line.duration" /></td>
                             <td><span t-field="line.lip_sync" /></td>
                             <td><span t-field="line.image_prompt" /></td>
-                            <td><span t-field="line.video_url" /></td>
-                            <td><span t-field="line.video_mp4" /></td>
-                            <td><span t-field="line.video_mp4_filename" /></td>
                             <td><span t-field="line.image_url" /></td>
                             <td><span t-field="line.image_png" /></td>
                             <td><span t-field="line.image_png_filename" /></td>
+                            <td><span t-field="line.video_prompt" /></td>
+                            <td><span t-field="line.video_url" /></td>
+                            <td><span t-field="line.video_mp4" /></td>
+                            <td><span t-field="line.video_mp4_filename" /></td>
                             <td><span t-field="line.clip_names" /></td>
+                            <td><span t-field="line.lyrics" /></td>
                             <td><span t-field="line.actor_ids" /></td>
                             <td><span t-field="line.song_id" /></td>
                             <td><span t-field="line.song_clip_ids" /></td>

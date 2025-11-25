@@ -22,7 +22,7 @@
                 <field name="song_mp3" position="replace"/>
                 <field name="song_mp3_url" position="replace"/>
                 <field name="song_mp3_filename" position="replace"/>
-                <xpath expr="//notebook/page[@name='actor_ids']" position="before">
+                <xpath expr="//notebook/page[@name='scene_ids']" position="before">
                     <page string="Song Details">
                         <group>
                             <group>
@@ -53,6 +53,22 @@
                         </group>                    
                     </page> -->
                 </xpath>
+
+                <field name="scenes_zip" position="replace"/>
+                <page name="scene_ids" position="inside">
+                    <group>
+                        <field name="scenes_zip"/>
+                        <button name="action_download_scenes" string="Download Scenes"/>
+                    </group>
+                </page>
+
+                <field name="song_clips_zip" position="replace"/>
+                <page name="song_clip_ids" position="inside">
+                    <group>
+                        <field name="song_clips_zip"/>
+                        <button name="action_download_song_clips" string="Download Song Clips"/>
+                    </group>
+                </page>
             </field>
         </record>
         <!-- search -->

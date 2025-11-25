@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record id="prompt1" model="vit.prompt">
+            <field name="name">Prompt 1</field>
+            <field name="user_prompt"><![CDATA[Lirik lagu: {context} 
+{question}
+Buat data scenes untuk music video, dengan image prompt, video prompt, dan baris lyric mana yang related ke scene ini, start end frame dan durasi dalam detik.
+Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti ini contohnya, tanpa penjelasan di awal dan akhir:
+[
+    {{
+    "scene": "Opening",
+    "description": "Close-up penyanyi di kamar temaram, cahaya kuning lembut, ekspresi reflektif.",
+    "duration":"10",
+    "start":"0",
+    "end":"10",
+    "image_prompt": "cinematic close-up of a man sitting alone in a dim warm-lit bedroom, emotional eyes, film grain, shallow depth of field",
+    "video_prompt": "...",
+    "lyrics":"...",
+    }},
+    ...
+]
+]]></field>
+            <field name="system_prompt">You are a helpfull assistant</field>
+        </record>
+    </data>
+</odoo>

@@ -30,7 +30,9 @@
 		"view/actor.xml",
 		"report/actor.xml",
 		"view/song_clip.xml",
-		"report/song_clip.xml"
+		"report/song_clip.xml",
+		"view/prompt.xml",
+		"report/prompt.xml"
 	],
 	"installable": True,
 	"auto_install": False,

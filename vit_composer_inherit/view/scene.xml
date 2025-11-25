@@ -17,6 +17,7 @@
             <field name="type">form</field>
             <field name="inherit_id" ref="vit_composer.view_vit_scene_form"/>
             <field name="arch" type="xml">
+                <field name="video_prompt" position="replace"/>
                 <field name="image_prompt" position="replace"/>
                 <field name="video_url" position="replace"/>
                 <field name="video_mp4" position="replace"/>
@@ -33,6 +34,7 @@
                     </page>
                     <page string="Videos">
                         <group>
+                            <field name="video_prompt"/>
                             <field name="video_url" />
                             <field name="video_mp4" />
                         </group>
