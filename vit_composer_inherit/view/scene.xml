@@ -32,7 +32,7 @@
                 <notebook position="inside">
                     <page string="Images">
                         <group>
-                            <field name="image_prompt"/>
+                            <field name="image_prompt"/><button name="generate_image" type="object" string="Generate Image"/>
                             <field name="image_url"/><button name="download_image" type="object" string="Download Image"/>
                             <field name="image_png" widget="image"/>
                         </group>
@@ -41,7 +41,7 @@
                         <group>
                             <group string="Video">
                                 <field name="lip_sync" help="Lip sync with audio clips?"/>
-                                <field name="video_prompt"/>
+                                <field name="video_prompt"/><button name="generate_video" type="object" string="Generate Image"/>
                                 <field name="video_url" /><button name="download_video" type="object" string="Download Video"/>
                                 <field name="video_mp4" widget="video_player"/>
                             </group>

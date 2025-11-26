@@ -35,7 +35,7 @@ class scene(models.Model):
         for rec in self:
             rec.clip_mp3_url = f"{base_url}/web/image/vit.scene/{rec.id}/clip_mp3?unique={int(time.time())}"
 
-    def action_generate_image(self, ):
+    def generate_image(self, ):
         if not self.image_prompt:
             raise UserError('Scene mage prompt empty!')
         
@@ -57,7 +57,7 @@ class scene(models.Model):
         self.download_wavespeed_result(self.image_url, 'image_png', 'png')
 
 
-    def action_generate_video(self, ):
+    def generate_video(self, ):
         if not self.image_png:
             raise UserError('Scene reference image empty!')
         if not self.video_prompt:

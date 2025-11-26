@@ -40,8 +40,6 @@
             <field name="arch" type="xml">
                 <form string="Scene">
                     <header>
-                        <button string="Generate Image" type="object" name="action_generate_image" />
-                        <button string="Generate Video" type="object" name="action_generate_video" />
                         <button string="Reload" type="object" name="action_reload_view" icon="fa-refresh"/>
                     </header>
                     <sheet>

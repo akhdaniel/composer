@@ -10,11 +10,11 @@ class scene(models.Model):
     _description = "vit.scene"
 
 
-    def action_generate_image(self, ):
+    def generate_image(self, ):
         pass
 
 
-    def action_generate_video(self, ):
+    def generate_video(self, ):
         pass
 
 
