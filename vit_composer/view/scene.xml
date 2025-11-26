@@ -76,7 +76,7 @@
                             <group> <!-- right -->
                                 <field name="actor_ids" domain="[('song_id','=',song_id)]" widget="many2many_tags" />
                                 <field name="song_id"  />
-                                <field name="song_clip_ids"  />
+                                <field name="song_clip_ids" domain="[('song_id','=',song_id)]" />
                             </group>
                         </group>
                         <notebook>

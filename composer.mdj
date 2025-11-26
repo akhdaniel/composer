@@ -4517,6 +4517,7 @@
 									"$ref": "AAAAAAGasrm4A7Aw4DQ="
 								},
 								"name": "song_clip_ids",
+								"documentation": "{\n\"xml:domain\":\"[('song_id','=',song_id)]\"\n}",
 								"reference": {
 									"$ref": "AAAAAAGartgnT1gzVn8="
 								},
