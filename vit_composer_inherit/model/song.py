@@ -11,6 +11,7 @@ import requests
 import base64
 import io
 import zipfile
+from pydub import AudioSegment
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -41,11 +42,29 @@ class song(models.Model):
             scene.clip_mp3_filename = f'Audio Clip {i}'
             scene.clip_mp3 = splitter.split_range( scene.start, scene.end)
 
+    def get_song_duration(self):
+        """
+        Returns duration of MP3 (base64) in seconds (float)
+        """
+        if not self.song_mp3:
+            return 0.0
+
+        # Decode base64 → bytes
+        audio_bytes = base64.b64decode(self.song_mp3)
+
+        # Load audio into memory using pydub
+        audio_segment = AudioSegment.from_file(io.BytesIO(audio_bytes), format="mp3")
+
+        # Duration in milliseconds → convert to seconds
+        duration_seconds = len(audio_segment) / 1000.0
+
+        return duration_seconds
+    
     def action_generate_scenes(self, ):
         context = self.lyrics
         additional_command=""
         system_prompt = self.prompt_id.system_prompt 
-        question = ""
+        question = self.get_song_duration()
         user_prompt = self.prompt_id.user_prompt
         openai_api_key = self.env["ir.config_parameter"].sudo().get_param("openai_api_key")
         openai_base_url = self.env["ir.config_parameter"].sudo().get_param("openai_base_url", None)

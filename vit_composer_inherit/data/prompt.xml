@@ -1,10 +1,11 @@
 <odoo>
-    <data>
+    <data noupdate="1">
         <record id="prompt1" model="vit.prompt">
             <field name="name">Prompt 1</field>
             <field name="user_prompt"><![CDATA[Lirik lagu: {context} 
-{question}
-Buat data scenes untuk music video, dengan image prompt, video prompt, dan baris lyric mana yang related ke scene ini, start end frame dan durasi dalam detik.
+====
+Buat data scenes untuk music video, dengan image prompt, video prompt, dan baris lyric mana yang related ke scene ini berasarkan lyric diatas (bukan lyric baru), 
+start dan end frame dan durasi dalam detik, dengan total durasi lagu {question} detik.
 Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti ini contohnya, tanpa penjelasan di awal dan akhir:
 [
     {{
@@ -14,8 +15,8 @@ Response HANYA dalam Format data JSON plain text, bukan MD, dan harus seperti in
     "start":"0",
     "end":"10",
     "image_prompt": "cinematic close-up of a man sitting alone in a dim warm-lit bedroom, emotional eyes, film grain, shallow depth of field",
-    "video_prompt": "...",
-    "lyrics":"...",
+    "video_prompt": "video generation promot untuk scene ini",
+    "lyrics":"lyric terkait scene",
     }},
     ...
 ]
