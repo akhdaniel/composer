@@ -38,7 +38,7 @@ class song(models.Model):
     def action_split_song(self, ):
         splitter = AudioSplitterBase64(self.song_mp3,)
         for i, scene in enumerate(self.scene_ids):
-            scene.slip_mp3_filename = f'Audio Clip {i}'
+            scene.clip_mp3_filename = f'Audio Clip {i}'
             scene.clip_mp3 = splitter.split_range( scene.start, scene.end)
 
     def action_generate_scenes(self, ):
