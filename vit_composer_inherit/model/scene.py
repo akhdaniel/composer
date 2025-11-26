@@ -58,10 +58,18 @@ class scene(models.Model):
         self.download_wavespeed_result(self.image_url, 'image_png', 'png')
 
     def separate_vocal(self, ):
-        from .libs.audio_processor import AudioProcessor
-        ap = AudioProcessor(self.clip_mp3)
-        result = ap.separate()
-        self.clip_mp3_vocal = result['vocals']
+        # from .libs.audio_processor import AudioProcessor
+        # ap = AudioProcessor(self.clip_mp3)
+        # result = ap.separate()
+        # self.clip_mp3_vocal = result['vocals']
+
+        mp3_bytes = base64.b64decode(self.clip_mp3)
+        resp = requests.post(
+            "http://audio-tools:8000/separate",
+            files={"file": (f"{self.name}.mp3", mp3_bytes, "audio/mpeg")}
+        )
+        vocals_b64 = resp.json()["vocals"]        
+        self.clip_mp3_vocal = vocals_b64
 
     def generate_video(self, ):
         if not self.image_png:
