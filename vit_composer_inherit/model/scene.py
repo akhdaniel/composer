@@ -59,7 +59,7 @@ class scene(models.Model):
         ref_image = f"{base_url}/web/image/vit.scene/{self.id}/image_png?unique={int(time.time())}"
 
         video_url = ws.generate_video(
-            image_prompt=self.video_prompt,
+            video_prompt=self.video_prompt,
             model_name='wavespeed-ai/wan-2.2/i2v-5b-720p',
             reference_image_url=ref_image)
         
