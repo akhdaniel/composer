@@ -125,7 +125,7 @@ class Wavespeed:
     def generate_video(self, video_prompt, model_name='bytedance/seedance-v1-pro-fast/text-to-video', 
                        resolution='480p',
                        aspect_ratio="9:16",
-                       referece_image_url=None, duration=5):
+                       reference_image_url=None, duration=5):
         _logger.info('Generating video...')
         additional_payload = {
                 "seed": -1
@@ -137,9 +137,9 @@ class Wavespeed:
                 "duration": duration,
                 "resolution": resolution
             })
-        if referece_image_url:
+        if reference_image_url:
             additional_payload.update({
-                "image": referece_image_url
+                "image": reference_image_url
             })
 
         url = self.generate(
