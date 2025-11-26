@@ -109,7 +109,6 @@
                     <filter string="Image Png" name="filter_by_image_png" domain="[('image_png','=','')]" />
                     <filter string="Image Png Filename" name="filter_by_image_png_filename" domain="[('image_png_filename','=','')]" />
                     <filter string="Video Prompt" name="filter_by_video_prompt" domain="[('video_prompt','=','')]" />
-                    <filter string="Video Url" name="filter_by_video_url" domain="[('video_url','=','')]" />
                     <filter string="Video Mp4" name="filter_by_video_mp4" domain="[('video_mp4','=','')]" />
                     <filter string="Video Mp4 Filename" name="filter_by_video_mp4_filename" domain="[('video_mp4_filename','=','')]" />
                     <filter string="Lyrics" name="filter_by_lyrics" domain="[('lyrics','=','')]" />
@@ -126,7 +125,6 @@
                     <field name="image_png" select="True"/>
                     <field name="image_png_filename" select="True"/>
                     <field name="video_prompt" select="True"/>
-                    <field name="video_url" select="True"/>
                     <field name="video_mp4" select="True"/>
                     <field name="video_mp4_filename" select="True"/>
                     <field name="lyrics" select="True"/>

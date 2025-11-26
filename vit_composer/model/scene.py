@@ -26,11 +26,11 @@ class scene(models.Model):
         pass
 
 
-    @api.depends("clip_mp3")
+    @api.depends("clip_mp3","video_mp4")
     def _get_clip_url(self, ):
         """
         {
-        "@api.depends":["clip_mp3"]
+        "@api.depends":["clip_mp3","video_mp4"]
         }
         """
         pass
@@ -50,7 +50,7 @@ class scene(models.Model):
     image_png = fields.Binary( string=_("Image Png"))
     image_png_filename = fields.Char( string=_("Image Png Filename"))
     video_prompt = fields.Text( string=_("Video Prompt"))
-    video_url = fields.Text( string=_("Video Url"))
+    video_url = fields.Text(compute="_get_clip_url",  string=_("Video Url"))
     video_mp4 = fields.Binary( string=_("Video Mp4"))
     video_mp4_filename = fields.Char( string=_("Video Mp4 Filename"))
     lyrics = fields.Text( string=_("Lyrics"))

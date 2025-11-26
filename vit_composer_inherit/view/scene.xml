@@ -41,7 +41,7 @@
                         <group>
                             <group string="Video">
                                 <field name="lip_sync" help="Lip sync with audio clips?"/>
-                                <field name="video_prompt"/><button name="generate_video" type="object" string="Generate Image"/>
+                                <field name="video_prompt"/><button name="generate_video" type="object" string="Generate Video"/>
                                 <field name="video_url" widget="video_player"/><button name="download_video" type="object" string="Download Video"/>
                                 <field name="video_mp4" filename="video_mp4_filename"/>
                                 <field name="video_mp4_filename" invisible="True"/>

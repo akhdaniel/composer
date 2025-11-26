@@ -24,16 +24,17 @@ class scene(models.Model):
     #     for rec in self:
     #         rec.clip_names = ", ".join(rec.song_clip_ids.mapped('name'))
 
-    @api.depends("clip_mp3")
+    @api.depends("clip_mp3","video_mp4")
     def _get_clip_url(self, ):
         """
         {
-        "@api.depends":["clip_mp3"]
+            @api.depends("clip_mp3","video_mp4")
         }
         """
         base_url =self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         for rec in self:
-            rec.clip_mp3_url = f"{base_url}/web/image/vit.scene/{rec.id}/clip_mp3?unique={int(time.time())}"
+            rec.clip_mp3_url = f"{base_url}/web/content/vit.scene/{rec.id}/clip_mp3?unique={int(time.time())}"
+            rec.video_url = f"{base_url}/web/content/vit.scene/{rec.id}/video_mp4?unique={int(time.time())}"
 
     def generate_image(self, ):
         if not self.image_prompt:

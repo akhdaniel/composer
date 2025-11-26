@@ -4056,7 +4056,7 @@
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
 							"name": "video_url",
-							"documentation": "{\n\"tree:invisible\":true\n}",
+							"documentation": "{\n\"tree:invisible\":true,\n\"compute\":\"_get_clip_url\"\n}",
 							"type": "Text"
 						},
 						{
@@ -4159,7 +4159,7 @@
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
 							"name": "_get_clip_url",
-							"documentation": "{\n\"@api.depends\":[\"clip_mp3\"]\n}"
+							"documentation": "{\n\"@api.depends\":[\"clip_mp3\",\"video_mp4\"]\n}"
 						}
 					]
 				},
