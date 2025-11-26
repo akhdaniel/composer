@@ -96,6 +96,7 @@
                             <td>Clip Mp3 Filename</td>
                             <td>Clip Mp3 Url</td>
                             <td>Clip Mp3 Vocal</td>
+                            <td>Clip Mp3 Vocal Url</td>
                             <td>Actor</td>
                             <td>Song</td>
                         </tr>
@@ -121,6 +122,7 @@
                             <td><span t-field="line.clip_mp3_filename" /></td>
                             <td><span t-field="line.clip_mp3_url" /></td>
                             <td><span t-field="line.clip_mp3_vocal" /></td>
+                            <td><span t-field="line.clip_mp3_vocal_url" /></td>
                             <td><span t-field="line.actor_ids" /></td>
                             <td><span t-field="line.song_id" /></td>
                         </tr> <!-- foreach-->

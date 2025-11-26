@@ -62,6 +62,7 @@ class scene(models.Model):
     clip_mp3_filename = fields.Char( string=_("Clip Mp3 Filename"))
     clip_mp3_url = fields.Char(compute="_get_clip_url",  string=_("Clip Mp3 Url"))
     clip_mp3_vocal = fields.Binary( string=_("Clip Mp3 Vocal"))
+    clip_mp3_vocal_url = fields.Char(compute="_get_clip_url",  string=_("Clip Mp3 Vocal Url"))
 
 
     def copy(self, default=None):

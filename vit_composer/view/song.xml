@@ -89,6 +89,7 @@
                                         <field name="lyrics" /> <!-- 114-->
                                         <field name="clip_mp3_url" widget="audio_player"/> <!-- 117-->
                                         <field name="clip_mp3_vocal" /> <!-- 118-->
+                                        <field name="clip_mp3_vocal_url" widget="audio_player"/> <!-- 119-->
                                     </list>
                                 </field>
                             </page>

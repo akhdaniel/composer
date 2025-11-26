@@ -18,6 +18,7 @@
                     <field name="lyrics" /> <!-- 114-->
                     <field name="clip_mp3_url" widget="audio_player"/> <!-- 117-->
                     <field name="clip_mp3_vocal" /> <!-- 118-->
+                    <field name="clip_mp3_vocal_url" widget="audio_player"/> <!-- 119-->
                 </list>
             </field>
         </record>
@@ -74,6 +75,7 @@
                                 <field name="clip_mp3_filename" filename="clip_mp3_filename" invisible="True" />
                                 <field name="clip_mp3_url" widget="audio_player" />
                                 <field name="clip_mp3_vocal"  />
+                                <field name="clip_mp3_vocal_url" widget="audio_player" />
                             </group>
                             <group> <!-- right -->
                                 <field name="actor_ids" domain="[('song_id','=',song_id)]" widget="many2many_tags" />
