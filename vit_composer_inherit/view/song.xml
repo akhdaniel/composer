@@ -62,13 +62,13 @@
                     </group>
                 </page>
 
-                <field name="song_clips_zip" position="replace"/>
+                <!-- <field name="song_clips_zip" position="replace"/>
                 <page name="song_clip_ids" position="inside">
                     <group>
                         <field name="song_clips_zip"/>
                         <button name="action_download_song_clips" string="Download Song Clips"/>
                     </group>
-                </page>
+                </page> -->
             </field>
         </record>
         <!-- search -->
