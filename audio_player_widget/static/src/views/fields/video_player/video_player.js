@@ -8,8 +8,8 @@ export class FieldVideoURL extends UrlField {
         super.setup()
     }
 }
-export const FieldVideoURL = {
+export const fieldVideoURL = {
     ...urlField,
     component: FieldVideoURL,
 };
-registry.category('fields').add('video_player', FieldVideoURL);
+registry.category('fields').add('video_player', fieldVideoURL);
