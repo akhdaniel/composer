@@ -14,16 +14,6 @@ class scene(models.Model):
     _name = "vit.scene"
     _inherit = "vit.scene"
 
-    # @api.depends("song_clip_ids")
-    # def _get_clip_names(self, ):
-    #     """
-    #     {
-    #     "@api.depends":["song_clip_ids"]
-    #     }
-    #     """
-    #     for rec in self:
-    #         rec.clip_names = ", ".join(rec.song_clip_ids.mapped('name'))
-
     @api.depends("clip_mp3","video_mp4")
     def _get_clip_url(self, ):
         """
@@ -67,10 +57,11 @@ class scene(models.Model):
         self.image_url = image_url
         self.download_wavespeed_result(self.image_url, 'image_png', 'png')
 
-
-
     def separate_vocal(self, ):
-        pass
+        from .libs.audio_processor import AudioProcessor
+        ap = AudioProcessor(self.clip_mp3)
+        result = ap.separate()
+        self.clip_mp3_vocal = result['vocals']
 
     def generate_video(self, ):
         if not self.image_png:
@@ -96,6 +87,7 @@ class scene(models.Model):
                 additional_payload=additional_payload)
         else:
             self.separate_vocal()
+            return 
             if not self.clip_mp3_vocal:
                 raise UserError('Vocal Audio empty!')
 
@@ -113,7 +105,6 @@ class scene(models.Model):
         
         self.video_url = video_url
         self.download_wavespeed_result(self.video_url, 'video_mp4', 'mp4')
-
 
     def download_wavespeed_result(self, result_url, field_name, ext):
         for rec in self:
