@@ -4179,6 +4179,7 @@
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
 							"name": "clip_mp3_vocal",
+							"documentation": "{\n\"tree:invisible\":true\n}",
 							"type": "Binary"
 						},
 						{
@@ -4188,7 +4189,7 @@
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
 							"name": "clip_mp3_vocal_url",
-							"documentation": "{\n\"compute\":\"_get_clip_url\",\n\"xml:widget\":\"audio_player\"\n}",
+							"documentation": "{\n\"compute\":\"_get_clip_url\",\n\"xml:widget\":\"audio_player\",\n\"tree:invisible\":true\n}",
 							"type": "Char"
 						}
 					],
