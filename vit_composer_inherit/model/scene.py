@@ -58,10 +58,26 @@ class scene(models.Model):
         base_url =self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         ref_image = f"{base_url}/web/image/vit.scene/{self.id}/image_png?unique={int(time.time())}"
 
-        video_url = ws.generate_video(
-            video_prompt=self.video_prompt,
-            model_name='wavespeed-ai/wan-2.2/i2v-5b-720p',
-            reference_image_url=ref_image)
+
+        if not self.lip_sync:
+            additional_payload = {
+                'image':ref_image
+            }
+            video_url = ws.generate_video(
+                video_prompt=self.video_prompt,
+                model_name='wavespeed-ai/wan-2.2/i2v-5b-720p',
+                additional_payload=additional_payload)
+        else:
+            ref_audio = f"{base_url}/web/image/vit.scene/{self.id}/image_png?unique={int(time.time())}"
+            additional_payload = {
+                "audio": ref_audio,
+                "image": ref_image,
+                "seed": -1
+            }
+            video_url = ws.generate_video(
+                video_prompt=self.video_prompt,
+                model_name='infinitetalk-fast',
+                additional_payload=additional_payload)            
         
         self.video_url = video_url
         self.download_wavespeed_result(self.video_url, 'video_mp4', 'mp4')

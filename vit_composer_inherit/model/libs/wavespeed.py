@@ -122,26 +122,11 @@ class Wavespeed:
         _logger.info('    Final Music URL', url)
         return url
 
-    def generate_video(self, video_prompt, model_name='bytedance/seedance-v1-pro-fast/text-to-video', 
-                       resolution='480p',
-                       aspect_ratio="9:16",
-                       reference_image_url=None, duration=5):
+    def generate_video(self, video_prompt, 
+                       model_name='bytedance/seedance-v1-pro-fast/text-to-video', 
+                       additional_payload={}):
         _logger.info('Generating video...')
-        additional_payload = {
-                "seed": -1
-            }
-        if model_name=='':
-            additional_payload.update({
-                "aspect_ratio": aspect_ratio,
-                "camera_fixed": False,
-                "duration": duration,
-                "resolution": resolution
-            })
-        if reference_image_url:
-            additional_payload.update({
-                "image": reference_image_url
-            })
-
+        _logger.info(f'   additional_payload={additional_payload}')
         url = self.generate(
             model_name=model_name,
             prompt=video_prompt,
