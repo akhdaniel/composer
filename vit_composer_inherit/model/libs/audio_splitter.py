@@ -39,7 +39,28 @@ class AudioSplitterBase64:
             chunk_base64_list.append(b64)
 
         return chunk_base64_list
+    
+    # -------------------------------------------------------
+    # 🔹 NEW: Extract audio by start–end range (in seconds)
+    # -------------------------------------------------------
+    def split_range(self, start_sec, end_sec):
+        """
+        Extract audio from start_sec → end_sec (in seconds)
+        Returns base64 encoded MP3.
+        """
+        start_ms = int(start_sec * 1000)
+        end_ms = int(end_sec * 1000)
 
+        # safety limits
+        start_ms = max(0, start_ms)
+        end_ms = min(len(self.audio), end_ms)
+
+        if start_ms >= end_ms:
+            raise ValueError("End time must be greater than start time")
+
+        clipped_segment = self.audio[start_ms:end_ms]
+
+        return self.audio_to_base64(clipped_segment)
 
 # ============================
 # Example Usage

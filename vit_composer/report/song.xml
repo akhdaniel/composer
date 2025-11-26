@@ -67,8 +67,8 @@
                             <p class="m-0" t-field="doc.gpt_model_id"/>
                         </div>
                         <div class="col-auto mw-100 mb-2">
-                            <strong>Prompt</strong>
-                            <p class="m-0" t-field="doc.prompt_id"/>
+                            <strong>Scene Prompt</strong>
+                            <p class="m-0" t-field="doc.scene_prompt_id"/>
                         </div>
                     </div>
                 </div>

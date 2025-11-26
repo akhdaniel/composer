@@ -3987,17 +3987,17 @@
 									},
 									"font": "Roboto;13;0",
 									"parentStyle": false,
-									"left": 517,
-									"top": 268,
-									"width": 65.634765625,
+									"left": 464,
+									"top": 272,
+									"width": 105.955078125,
 									"height": 13,
-									"alpha": 0.5235987755982988,
-									"distance": 30,
+									"alpha": 0.3034825343990164,
+									"distance": 61.98386886924694,
 									"hostEdge": {
 										"$ref": "AAAAAAGauofje3Fgyp0="
 									},
 									"edgePosition": 2,
-									"text": "+prompt_id"
+									"text": "+scene_prompt_id"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -4236,7 +4236,7 @@
 								"_parent": {
 									"$ref": "AAAAAAGauofjeXFcRPc="
 								},
-								"name": "prompt_id",
+								"name": "scene_prompt_id",
 								"reference": {
 									"$ref": "AAAAAAGartRooFfzpI0="
 								},
@@ -4272,6 +4272,7 @@
 								"$ref": "AAAAAAGartRooFfzpI0="
 							},
 							"name": "prompt",
+							"documentation": "{\n\"string\":\"Song Prompt\"\n}",
 							"type": "Text"
 						},
 						{

@@ -48,7 +48,7 @@ class song(models.Model):
         pass
 
     name = fields.Char( required=True, copy=False, string=_("Name"))
-    prompt = fields.Text( string=_("Prompt"))
+    prompt = fields.Text(string="Song Prompt")
     lyrics = fields.Text( string=_("Lyrics"))
     duration = fields.Float( string=_("Duration"))
     original_url = fields.Char( string=_("Original Url"))
@@ -72,4 +72,4 @@ class song(models.Model):
     scene_ids = fields.One2many(comodel_name="vit.scene",  inverse_name="song_id",  string=_("Scene"))
     actor_ids = fields.One2many(comodel_name="vit.actor",  inverse_name="song_id",  string=_("Actor"))
     song_clip_ids = fields.One2many(comodel_name="vit.song_clip",  inverse_name="song_id",  string=_("Song Clip"))
-    prompt_id = fields.Many2one(comodel_name="vit.prompt",  string=_("Prompt"))
+    scene_prompt_id = fields.Many2one(comodel_name="vit.prompt",  string=_("Scene Prompt"))

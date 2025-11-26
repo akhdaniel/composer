@@ -36,16 +36,25 @@ class song(models.Model):
         pass
 
     def action_split_song(self, ):
-        splitter = AudioSplitterBase64(self.song_mp3, chunk_length=10)
-        files = splitter.split()
-        print("Generated chunks:")
+        splitter = AudioSplitterBase64(self.song_mp3,)
         clips = []
-        for i,f in enumerate(files):
+        for i, scene in enumerate(self.scene_ids):
             clips.append((0,0,{
                 'name': f'Clip {i}',
-                'clip_mp3': f
+                'clip_mp3': splitter.split_range( scene.start, scene.end)
             }))
         self.song_clip_ids = clips
+
+        # splitter = AudioSplitterBase64(self.song_mp3, chunk_length=10)
+        # files = splitter.split()
+        # print("Generated chunks:")
+        # clips = []
+        # for i,f in enumerate(files):
+        #     clips.append((0,0,{
+        #         'name': f'Clip {i}',
+        #         'clip_mp3': f
+        #     }))
+        # self.song_clip_ids = clips
 
     def action_generate_scenes(self, ):
         context = self.lyrics
@@ -60,7 +69,8 @@ class song(models.Model):
 
         scenes = generate_content(openai_api_key=openai_api_key, 
                                 openai_base_url=openai_base_url, model=model, 
-                                system_prompt=system_prompt, user_prompt=user_prompt, 
+                                system_prompt=system_prompt, 
+                                user_prompt=user_prompt, 
                                 context=context, question=question, 
                                 additional_command=additional_command)    
         _logger.info('scenes====')

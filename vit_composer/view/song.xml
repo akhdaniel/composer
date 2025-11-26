@@ -12,7 +12,7 @@
                     <field name="gpt_model_id" /> <!-- 100-->
                     <field name="prompt" /> <!-- 101-->
                     <field name="duration" /> <!-- 103-->
-                    <field name="prompt_id" /> <!-- 104-->
+                    <field name="scene_prompt_id" /> <!-- 104-->
                     <field name="song_mp3_url" /> <!-- 107-->
                 </list>
             </field>
@@ -25,7 +25,7 @@
             <field name="arch" type="xml">
                 <pivot string="Song">
                     <field name="gpt_model_id" type="row"/>
-                    <field name="prompt_id" type="row"/>
+                    <field name="scene_prompt_id" type="row"/>
                 </pivot>
             </field>
         </record>
@@ -73,7 +73,7 @@
                             </group>
                             <group> <!-- right -->
                                 <field name="gpt_model_id"  />
-                                <field name="prompt_id"  />
+                                <field name="scene_prompt_id"  />
                             </group>
                         </group>
                         <notebook>
@@ -152,10 +152,10 @@
                     <field name="scenes_zip" select="True"/>
                     <field name="scenes_zip_filename" select="True"/>
                     <field name="gpt_model_id" select="True"/>
-                    <field name="prompt_id" select="True"/>
+                    <field name="scene_prompt_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Gpt Model" domain="[]" name="group_by_gpt_model_id" context="{'group_by':'gpt_model_id'}"/>
-                        <filter string="Prompt" domain="[]" name="group_by_prompt_id" context="{'group_by':'prompt_id'}"/>
+                        <filter string="Scene Prompt" domain="[]" name="group_by_scene_prompt_id" context="{'group_by':'scene_prompt_id'}"/>
                     </group>
                 </search>
             </field>
