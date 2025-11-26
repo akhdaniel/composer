@@ -107,7 +107,7 @@ class scene(models.Model):
             }
             video_url = ws.generate_video(
                 video_prompt=self.video_prompt,
-                model_name='infinitetalk-fast',
+                model_name='wavespeed-ai/infinitetalk-fast',
                 additional_payload=additional_payload
             )            
         
