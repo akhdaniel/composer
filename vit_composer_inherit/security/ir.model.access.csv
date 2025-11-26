@@ -1,2 +1,3 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
 access_all_vit_actor,access_all_vit_actor,vit_composer.model_vit_actor,,1,0,0,0
+access_all_vit_scene,access_all_vit_scene,vit_composer.model_vit_scene,,1,0,0,0
