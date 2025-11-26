@@ -26,7 +26,13 @@ class scene(models.Model):
         pass
 
 
+    @api.depends("clip_mp3")
     def _get_clip_url(self, ):
+        """
+        {
+        "@api.depends":["clip_mp3"]
+        }
+        """
         pass
 
 
@@ -50,7 +56,7 @@ class scene(models.Model):
     lyrics = fields.Text( string=_("Lyrics"))
     clip_mp3 = fields.Binary( string=_("Clip Mp3"))
     clip_mp3_filename = fields.Char( string=_("Clip Mp3 Filename"))
-    clip_mp3_url = fields.Char( string=_("Clip Mp3 Url"))
+    clip_mp3_url = fields.Char(compute="_get_clip_url",  string=_("Clip Mp3 Url"))
 
 
     def copy(self, default=None):

@@ -4115,7 +4115,7 @@
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
 							"name": "clip_mp3_url",
-							"documentation": "{\n\"tree:invisible\":true\n}",
+							"documentation": "{\n\"compute\":\"_get_clip_url\",\n\"xml:widget\":\"audio_player\"\n}",
 							"type": "Char"
 						}
 					],
@@ -4158,7 +4158,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
-							"name": "_get_clip_url"
+							"name": "_get_clip_url",
+							"documentation": "{\n\"@api.depends\":[\"clip_mp3\"]\n}"
 						}
 					]
 				},
