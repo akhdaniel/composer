@@ -94,7 +94,8 @@ class scene(models.Model):
                 model_name='wavespeed-ai/wan-2.2/i2v-5b-720p',
                 additional_payload=additional_payload)
         else:
-            self.separate_vocal()
+            if not self.clip_mp3_vocal:
+                self.separate_vocal()
 
             if not self.clip_mp3_vocal:
                 raise UserError('Vocal Audio empty!')
