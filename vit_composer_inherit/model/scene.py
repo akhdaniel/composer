@@ -68,6 +68,8 @@ class scene(models.Model):
             "http://audio-tools:8000/separate",
             files={"file": (f"{self.name}.mp3", mp3_bytes, "audio/mpeg")}
         )
+        _logger.info('response...')
+        _logger.info(resp.content)
         vocals_b64 = resp.json()["vocals"]        
         self.clip_mp3_vocal = vocals_b64
 
