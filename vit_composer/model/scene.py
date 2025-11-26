@@ -22,17 +22,11 @@ class scene(models.Model):
         pass
 
 
-    @api.depends("song_clip_ids")
-    def _get_clip_names(self, ):
-        """
-        {
-        "@api.depends":["song_clip_ids"]
-        }
-        """
+    def download_video(self, ):
         pass
 
 
-    def download_video(self, ):
+    def _get_clip_url(self, ):
         pass
 
 
@@ -53,8 +47,10 @@ class scene(models.Model):
     video_url = fields.Text( string=_("Video Url"))
     video_mp4 = fields.Binary( string=_("Video Mp4"))
     video_mp4_filename = fields.Char( string=_("Video Mp4 Filename"))
-    clip_names = fields.Char(compute="_get_clip_names",  string=_("Clip Names"))
     lyrics = fields.Text( string=_("Lyrics"))
+    clip_mp3 = fields.Binary( string=_("Clip Mp3"))
+    clip_mp3_filename = fields.Char( string=_("Clip Mp3 Filename"))
+    clip_mp3_url = fields.Char( string=_("Clip Mp3 Url"))
 
 
     def copy(self, default=None):
@@ -66,4 +62,3 @@ class scene(models.Model):
 
     actor_ids = fields.Many2many(comodel_name="vit.actor",  string=_("Actor"))
     song_id = fields.Many2one(comodel_name="vit.song",  string=_("Song"))
-    song_clip_ids = fields.Many2many(comodel_name="vit.song_clip",  string=_("Song Clip"))

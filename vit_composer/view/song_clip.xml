@@ -14,17 +14,6 @@
                 </list>
             </field>
         </record>
-        <!-- pivot view -->
-        <record id="view_vit_song_clip_pivot" model="ir.ui.view">
-            <field name="name">vit_song_clip_tree</field>
-            <field name="model">vit.song_clip</field>
-            <field name="type">pivot</field>
-            <field name="arch" type="xml">
-                <pivot string="Song Clip">
-                    <field name="song_id" type="row"/>
-                </pivot>
-            </field>
-        </record>
         <!-- form view -->
         <record id="view_vit_song_clip_form" model="ir.ui.view">
             <field name="name">vit_song_clip_form</field>
@@ -55,8 +44,6 @@
                                 <field name="scene_names"  />
                             </group>
                             <group> <!-- right -->
-                                <field name="scene_ids"  />
-                                <field name="song_id"  />
                             </group>
                         </group>
                         <notebook>
@@ -85,9 +72,7 @@
                     <field name="name" select="True"/>
                     <field name="clip_mp3" select="True"/>
                     <field name="clip_mp3_filename" select="True"/>
-                    <field name="song_id" select="True"/>
                     <group string="Group By..">
-                        <filter string="Song" domain="[]" name="group_by_song_id" context="{'group_by':'song_id'}"/>
                     </group>
                 </search>
             </field>
@@ -111,22 +96,12 @@
                 </kanban>
             </field>
         </record>
-        <!-- graph -->
-        <record id="view_vit_song_clip_graph" model="ir.ui.view">
-            <field name="name">vit_song_clip</field>
-            <field name="model">vit.song_clip</field>
-            <field name="arch" type="xml">
-                <graph string="Song Clip" type="bar">
-                    <field name="song_id"/>
-                </graph>
-            </field>
-        </record>
         <!-- action window -->
         <record id="action_song_clip" model="ir.actions.act_window">
             <field name="name">Song Clip</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">vit.song_clip</field>
-            <field name="view_mode">list,form,kanban,pivot,graph</field>
+            <field name="view_mode">list,form,kanban,pivot</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                 Click to add a new Song Clip

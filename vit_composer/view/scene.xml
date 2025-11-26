@@ -15,8 +15,10 @@
                     <field name="end" /> <!-- 103-->
                     <field name="duration" /> <!-- 104-->
                     <field name="lip_sync" /> <!-- 105-->
-                    <field name="clip_names" /> <!-- 114-->
-                    <field name="lyrics" /> <!-- 115-->
+                    <field name="lyrics" /> <!-- 114-->
+                    <field name="clip_mp3" /> <!-- 115-->
+                    <field name="clip_mp3_filename" /> <!-- 116-->
+                    <field name="clip_mp3_url" /> <!-- 117-->
                 </list>
             </field>
         </record>
@@ -70,13 +72,14 @@
                                 <field name="video_url"  />
                                 <field name="video_mp4" filename="video_mp4_filename" />
                                 <field name="video_mp4_filename" invisible="True" />
-                                <field name="clip_names"  />
                                 <field name="lyrics"  />
+                                <field name="clip_mp3"  />
+                                <field name="clip_mp3_filename"  />
+                                <field name="clip_mp3_url"  />
                             </group>
                             <group> <!-- right -->
                                 <field name="actor_ids" domain="[('song_id','=',song_id)]" widget="many2many_tags" />
                                 <field name="song_id"  />
-                                <field name="song_clip_ids" domain="[('song_id','=',song_id)]" />
                             </group>
                         </group>
                         <notebook>
@@ -114,6 +117,9 @@
                     <filter string="Video Mp4" name="filter_by_video_mp4" domain="[('video_mp4','=','')]" />
                     <filter string="Video Mp4 Filename" name="filter_by_video_mp4_filename" domain="[('video_mp4_filename','=','')]" />
                     <filter string="Lyrics" name="filter_by_lyrics" domain="[('lyrics','=','')]" />
+                    <filter string="Clip Mp3" name="filter_by_clip_mp3" domain="[('clip_mp3','=','')]" />
+                    <filter string="Clip Mp3 Filename" name="filter_by_clip_mp3_filename" domain="[('clip_mp3_filename','=','')]" />
+                    <filter string="Clip Mp3 Url" name="filter_by_clip_mp3_url" domain="[('clip_mp3_url','=','')]" />
                     <field name="name" select="True"/>
                     <field name="description" select="True"/>
                     <field name="start" select="True"/>
@@ -129,6 +135,9 @@
                     <field name="video_mp4" select="True"/>
                     <field name="video_mp4_filename" select="True"/>
                     <field name="lyrics" select="True"/>
+                    <field name="clip_mp3" select="True"/>
+                    <field name="clip_mp3_filename" select="True"/>
+                    <field name="clip_mp3_url" select="True"/>
                     <field name="song_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Song" domain="[]" name="group_by_song_id" context="{'group_by':'song_id'}"/>

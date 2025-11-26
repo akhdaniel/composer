@@ -71,5 +71,4 @@ class song(models.Model):
     gpt_model_id = fields.Many2one(comodel_name="vit.gpt_model",  string=_("Gpt Model"))
     scene_ids = fields.One2many(comodel_name="vit.scene",  inverse_name="song_id",  string=_("Scene"))
     actor_ids = fields.One2many(comodel_name="vit.actor",  inverse_name="song_id",  string=_("Actor"))
-    song_clip_ids = fields.One2many(comodel_name="vit.song_clip",  inverse_name="song_id",  string=_("Song Clip"))
     scene_prompt_id = fields.Many2one(comodel_name="vit.prompt",  string=_("Scene Prompt"))

@@ -12,7 +12,7 @@
                     <field name="gpt_model_id" /> <!-- 100-->
                     <field name="prompt" /> <!-- 101-->
                     <field name="duration" /> <!-- 103-->
-                    <field name="scene_prompt_id" /> <!-- 104-->
+                    <field name="scene_prompt_id" /> <!-- 103-->
                     <field name="song_mp3_url" /> <!-- 107-->
                 </list>
             </field>
@@ -86,8 +86,10 @@
                                         <field name="end" /> <!-- 103-->
                                         <field name="duration" /> <!-- 104-->
                                         <field name="lip_sync" /> <!-- 105-->
-                                        <field name="clip_names" /> <!-- 114-->
-                                        <field name="lyrics" /> <!-- 115-->
+                                        <field name="lyrics" /> <!-- 114-->
+                                        <field name="clip_mp3" /> <!-- 115-->
+                                        <field name="clip_mp3_filename" /> <!-- 116-->
+                                        <field name="clip_mp3_url" /> <!-- 117-->
                                     </list>
                                 </field>
                             </page>
@@ -98,15 +100,6 @@
                                         <field name="image" widget="image"/> <!-- 101-->
                                         <field name="image_prompt" /> <!-- 102-->
                                         <field name="image_url" /> <!-- 103-->
-                                    </list>
-                                </field>
-                            </page>
-                            <page name="song_clip_ids" string="Song Clip">
-                                <field name="song_clip_ids" >
-                                    <list >
-                                        <field name="name" /> <!-- 100-->
-                                        <field name="clip_mp3_url" widget="audio_player"/> <!-- 103-->
-                                        <field name="scene_names" /> <!-- 104-->
                                     </list>
                                 </field>
                             </page>

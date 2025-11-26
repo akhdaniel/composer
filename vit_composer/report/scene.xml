@@ -72,12 +72,19 @@
                             <p class="m-0" t-field="doc.video_mp4_filename" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
-                            <strong>Clip Names</strong>
-                            <p class="m-0" t-field="doc.clip_names" />
-                        </div>
-                        <div class="col-auto mw-100 mb-2">
                             <strong>Lyrics</strong>
                             <p class="m-0" t-field="doc.lyrics" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Clip Mp3</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Clip Mp3 Filename</strong>
+                            <p class="m-0" t-field="doc.clip_mp3_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Clip Mp3 Url</strong>
+                            <p class="m-0" t-field="doc.clip_mp3_url" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
                             <strong>Actor</strong>
@@ -86,10 +93,6 @@
                         <div class="col-auto mw-100 mb-2">
                             <strong>Song</strong>
                             <p class="m-0" t-field="doc.song_id"/>
-                        </div>
-                        <div class="col-auto mw-100 mb-2">
-                            <strong>Song Clip</strong>
-                            <p class="m-0" t-field="doc.song_clip_ids"/>
                         </div>
                     </div>
                 </div>
