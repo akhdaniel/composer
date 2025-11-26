@@ -95,11 +95,11 @@ class scene(models.Model):
                 additional_payload=additional_payload)
         else:
             self.separate_vocal()
-            return 
+
             if not self.clip_mp3_vocal:
                 raise UserError('Vocal Audio empty!')
 
-            ref_audio = f"{base_url}/web/content/vit.scene/{self.id}/clip_mp3_vocal?unique={int(time.time())}"
+            ref_audio = self.clip_mp3_vocal_url
             additional_payload = {
                 "audio": ref_audio,
                 "image": ref_image,
