@@ -1,5 +1,8 @@
 fastapi
 uvicorn[standard]
-demucs
+python-multipart
 ffmpeg-python
+
+# Demucs v3 (correct version for torch 1.13.1)
+demucs==3.0.5
 

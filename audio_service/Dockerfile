@@ -11,22 +11,23 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-# 🔥 Install python-multipart separately (FastAPI requires it BEFORE route load)
+# Force numpy 1.x (required)
+RUN pip install --no-cache-dir "numpy==1.26.4"
+
 RUN pip install --no-cache-dir python-multipart
 
-# Install Torch CPU (MUST be separate line)
-RUN pip install --no-cache-dir torch==2.1.0 --index-url https://download.pytorch.org/whl/cpu
+# CPU compatible versions
+RUN pip install --no-cache-dir \
+    torch==1.13.1+cpu \
+    torchaudio==0.13.1+cpu \
+    --index-url https://download.pytorch.org/whl/cpu
 
-# Install other Python deps
+# Install Demucs v3
 RUN pip install --no-cache-dir -r requirements.txt
-
-RUN demucs --help >/dev/null 2>&1 || true
-RUN demucs --dl >/dev/null 2>&1 || true
 
 COPY app.py .
 
 EXPOSE 8000
 
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
-
 
