@@ -41,7 +41,7 @@ class scene(models.Model):
                 ref_image.append(f"{base_url}/web/image/vit.actor/{actor.id}/image?unique={int(time.time())}")
         
         additional_payload={
-            "aspect_ratio": "9:16",
+            "aspect_ratio": "16:9",
             "enable_base64_output": False,
             "enable_sync_mode": False,
             "output_format": "png",
