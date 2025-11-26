@@ -87,6 +87,9 @@
                             <p class="m-0" t-field="doc.clip_mp3_url" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
+                            <strong>Clip Mp3 Vocal</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
                             <strong>Actor</strong>
                             <p class="m-0" t-field="doc.actor_ids"/>
                         </div>

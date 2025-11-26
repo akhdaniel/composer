@@ -17,6 +17,7 @@
                     <field name="lip_sync" /> <!-- 105-->
                     <field name="lyrics" /> <!-- 114-->
                     <field name="clip_mp3_url" widget="audio_player"/> <!-- 117-->
+                    <field name="clip_mp3_vocal" /> <!-- 118-->
                 </list>
             </field>
         </record>
@@ -72,6 +73,7 @@
                                 <field name="clip_mp3"  />
                                 <field name="clip_mp3_filename" filename="clip_mp3_filename" invisible="True" />
                                 <field name="clip_mp3_url" widget="audio_player" />
+                                <field name="clip_mp3_vocal"  />
                             </group>
                             <group> <!-- right -->
                                 <field name="actor_ids" domain="[('song_id','=',song_id)]" widget="many2many_tags" />
@@ -114,6 +116,7 @@
                     <filter string="Lyrics" name="filter_by_lyrics" domain="[('lyrics','=','')]" />
                     <filter string="Clip Mp3" name="filter_by_clip_mp3" domain="[('clip_mp3','=','')]" />
                     <filter string="Clip Mp3 Filename" name="filter_by_clip_mp3_filename" domain="[('clip_mp3_filename','=','')]" />
+                    <filter string="Clip Mp3 Vocal" name="filter_by_clip_mp3_vocal" domain="[('clip_mp3_vocal','=','')]" />
                     <field name="name" select="True"/>
                     <field name="description" select="True"/>
                     <field name="start" select="True"/>
@@ -130,6 +133,7 @@
                     <field name="lyrics" select="True"/>
                     <field name="clip_mp3" select="True"/>
                     <field name="clip_mp3_filename" select="True"/>
+                    <field name="clip_mp3_vocal" select="True"/>
                     <field name="song_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Song" domain="[]" name="group_by_song_id" context="{'group_by':'song_id'}"/>

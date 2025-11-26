@@ -88,6 +88,7 @@
                                         <field name="lip_sync" /> <!-- 105-->
                                         <field name="lyrics" /> <!-- 114-->
                                         <field name="clip_mp3_url" widget="audio_player"/> <!-- 117-->
+                                        <field name="clip_mp3_vocal" /> <!-- 118-->
                                     </list>
                                 </field>
                             </page>

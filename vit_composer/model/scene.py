@@ -36,6 +36,10 @@ class scene(models.Model):
         pass
 
 
+    def separate_vocal(self, ):
+        pass
+
+
     def action_reload_view(self):
         pass
 
@@ -57,6 +61,7 @@ class scene(models.Model):
     clip_mp3 = fields.Binary( string=_("Clip Mp3"))
     clip_mp3_filename = fields.Char( string=_("Clip Mp3 Filename"))
     clip_mp3_url = fields.Char(compute="_get_clip_url",  string=_("Clip Mp3 Url"))
+    clip_mp3_vocal = fields.Binary( string=_("Clip Mp3 Vocal"))
 
 
     def copy(self, default=None):

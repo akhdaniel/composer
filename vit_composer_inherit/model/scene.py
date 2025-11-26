@@ -34,6 +34,7 @@ class scene(models.Model):
         base_url =self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         for rec in self:
             rec.clip_mp3_url = f"{base_url}/web/content/vit.scene/{rec.id}/clip_mp3?unique={int(time.time())}"
+            rec.clip_mp3_vocal_url = f"{base_url}/web/content/vit.scene/{rec.id}/clip_mp3_vocal?unique={int(time.time())}"
             rec.video_url = f"{base_url}/web/content/vit.scene/{rec.id}/video_mp4?unique={int(time.time())}"
 
     def generate_image(self, ):
@@ -67,6 +68,10 @@ class scene(models.Model):
         self.download_wavespeed_result(self.image_url, 'image_png', 'png')
 
 
+
+    def separate_vocal(self, ):
+        pass
+
     def generate_video(self, ):
         if not self.image_png:
             raise UserError('Scene reference image empty!')
@@ -82,6 +87,7 @@ class scene(models.Model):
 
         if not self.lip_sync:
             additional_payload = {
+                'duration': int(self.duration),
                 'image':ref_image
             }
             video_url = ws.generate_video(
@@ -89,7 +95,11 @@ class scene(models.Model):
                 model_name='wavespeed-ai/wan-2.2/i2v-5b-720p',
                 additional_payload=additional_payload)
         else:
-            ref_audio = f"{base_url}/web/image/vit.scene/{self.id}/image_png?unique={int(time.time())}"
+            self.separate_vocal()
+            if not self.clip_mp3_vocal:
+                raise UserError('Vocal Audio empty!')
+
+            ref_audio = f"{base_url}/web/content/vit.scene/{self.id}/clip_mp3_vocal?unique={int(time.time())}"
             additional_payload = {
                 "audio": ref_audio,
                 "image": ref_image,
@@ -98,7 +108,8 @@ class scene(models.Model):
             video_url = ws.generate_video(
                 video_prompt=self.video_prompt,
                 model_name='infinitetalk-fast',
-                additional_payload=additional_payload)            
+                additional_payload=additional_payload
+            )            
         
         self.video_url = video_url
         self.download_wavespeed_result(self.video_url, 'video_mp4', 'mp4')
