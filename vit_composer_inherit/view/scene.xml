@@ -35,8 +35,8 @@
                     <page string="Videos">
                         <group>
                             <field name="video_prompt"/>
-                            <field name="video_url" />
-                            <field name="video_mp4" />
+                            <field name="video_url" /><button name="download_video" type="object" string="Download Video"/>
+                            <field name="video_mp4" widget="video_player"/>
                         </group>
                     </page>
                 </notebook>

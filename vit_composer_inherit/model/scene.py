@@ -89,3 +89,15 @@ class scene(models.Model):
             except Exception as e:
                 # optional: log error
                 raise UserError("Error downloading image from %s: %s", result_url, e)
+
+    def download_image(self):
+        result_url = self.result_url
+        field_name = 'image_png'
+        ext = 'png'
+        self.download_wavespeed_result(result_url, field_name, ext)
+    
+    def download_video(self):
+        result_url = self.result_url
+        field_name = 'video_mp4'
+        ext = 'mp4'
+        self.download_wavespeed_result(result_url, field_name, ext)

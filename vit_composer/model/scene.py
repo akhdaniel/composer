@@ -32,6 +32,10 @@ class scene(models.Model):
         pass
 
 
+    def download_video(self, ):
+        pass
+
+
     def action_reload_view(self):
         pass
 
