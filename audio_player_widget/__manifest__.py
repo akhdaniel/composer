@@ -1,5 +1,5 @@
 {
-    'name': "Audio Player Widget",
+    'name': "Audio video Player Widget",
     'author': 'Odoocrafts LLP',
     'version': "0.1",
     'sequence': "0",
@@ -11,7 +11,9 @@
             'audio_player_widget/static/src/views/fields/audio_player/audio_player.scss',
             'audio_player_widget/static/src/views/fields/audio_player/audio_player.xml',
             'audio_player_widget/static/src/views/fields/audio_player/audio_player.js',
-
+            'audio_player_widget/static/src/views/fields/audio_player/video_player.scss',
+            'audio_player_widget/static/src/views/fields/audio_player/video_player.xml',
+            'audio_player_widget/static/src/views/fields/audio_player/video_player.js',
         ],
     },
     'images': ['static/description/icon.png'],
