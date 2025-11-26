@@ -68,8 +68,9 @@ class Wavespeed:
 
         return final_url
 
-    def generate_image(self, image_prompt, model_name='google/nano-banana/text-to-image',additional_payload={}, reference_image_url=None):
+    def generate_image(self, image_prompt, model_name='google/nano-banana/text-to-image', additional_payload={},):
         _logger.info('Generating image...')
+        _logger.info(f'    additional_payload={additional_payload}')
         if not additional_payload:
             additional_payload={
                 "aspect_ratio": "9:16",
@@ -77,11 +78,7 @@ class Wavespeed:
                 "enable_sync_mode": False,
                 "output_format": "png",
             }
-        if reference_image_url:
-            additional_payload.update({
-                'images': reference_image_url
-            })
-            
+        
         url = self.generate(
             model_name=model_name,
             prompt=image_prompt,

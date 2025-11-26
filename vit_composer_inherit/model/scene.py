@@ -44,14 +44,23 @@ class scene(models.Model):
         ref_image=[]
 
         if self.actor_ids:
-            actor = self.actor_ids[0]
-            base_url =self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-            ref_image.append(f"{base_url}/web/image/vit.actor/{actor.id}/image?unique={int(time.time())}")
+            for actor in self.actor_ids:
+                base_url =self.env["ir.config_parameter"].sudo().get_param("web.base.url")
+                ref_image.append(f"{base_url}/web/image/vit.actor/{actor.id}/image?unique={int(time.time())}")
+        
+        additional_payload={
+            "aspect_ratio": "9:16",
+            "enable_base64_output": False,
+            "enable_sync_mode": False,
+            "output_format": "png",
+            'images': ref_image
+        }
 
         image_url = ws.generate_image(
             image_prompt=self.image_prompt,
             model_name='bytedance/seedream-v4/edit',
-            reference_image_url=ref_image)
+            additional_payload=additional_payload
+        )
         
         self.image_url = image_url
         self.download_wavespeed_result(self.image_url, 'image_png', 'png')
