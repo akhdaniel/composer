@@ -87,9 +87,6 @@
                                         <field name="duration" /> <!-- 104-->
                                         <field name="lip_sync" /> <!-- 105-->
                                         <field name="lyrics" /> <!-- 114-->
-                                        <field name="clip_mp3" /> <!-- 115-->
-                                        <field name="clip_mp3_filename" /> <!-- 116-->
-                                        <field name="clip_mp3_url" /> <!-- 117-->
                                     </list>
                                 </field>
                             </page>

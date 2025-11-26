@@ -16,9 +16,6 @@
                     <field name="duration" /> <!-- 104-->
                     <field name="lip_sync" /> <!-- 105-->
                     <field name="lyrics" /> <!-- 114-->
-                    <field name="clip_mp3" /> <!-- 115-->
-                    <field name="clip_mp3_filename" /> <!-- 116-->
-                    <field name="clip_mp3_url" /> <!-- 117-->
                 </list>
             </field>
         </record>
@@ -74,7 +71,7 @@
                                 <field name="video_mp4_filename" invisible="True" />
                                 <field name="lyrics"  />
                                 <field name="clip_mp3"  />
-                                <field name="clip_mp3_filename"  />
+                                <field name="clip_mp3_filename" filename="clip_mp3_filename" invisible="True" />
                                 <field name="clip_mp3_url"  />
                             </group>
                             <group> <!-- right -->

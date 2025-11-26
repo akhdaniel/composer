@@ -4095,6 +4095,7 @@
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
 							"name": "clip_mp3",
+							"documentation": "{\n\"tree:invisible\":true\n}",
 							"type": "Binary"
 						},
 						{
@@ -4104,6 +4105,7 @@
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
 							"name": "clip_mp3_filename",
+							"documentation": "{\n\"xml:filename\":\"clip_mp3_filename\",\n\"tree:invisible\":true,\n\"xml:invisible\":\"True\"\n}",
 							"type": "Char"
 						},
 						{
@@ -4113,6 +4115,7 @@
 								"$ref": "AAAAAAGartgnT1gzVn8="
 							},
 							"name": "clip_mp3_url",
+							"documentation": "{\n\"tree:invisible\":true\n}",
 							"type": "Char"
 						}
 					],

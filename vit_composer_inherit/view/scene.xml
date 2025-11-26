@@ -23,6 +23,7 @@
                 <field name="video_mp4" position="replace"/>
                 <field name="image_url" position="replace"/>
                 <field name="image_png" position="replace"/>
+                <field name="lip_sync" position="replace"/>
 
                 <field name="clip_mp3" position="replace"/>
                 <field name="clip_mp3_filename" position="replace"/>
@@ -38,12 +39,13 @@
                     </page>
                     <page string="Video Clips">
                         <group>
-                            <group>
+                            <group string="Video">
+                                <field name="lip_sync" help="Lip sync with audio clips?"/>
                                 <field name="video_prompt"/>
                                 <field name="video_url" /><button name="download_video" type="object" string="Download Video"/>
                                 <field name="video_mp4" widget="video_player"/>
                             </group>
-                            <group>
+                            <group string="Audio">
                                 <field name="clip_mp3"/>
                                 <field name="clip_mp3_filename" invisible="True"/>
                                 <field name="clip_mp3_url" widget="audio_player"/>
