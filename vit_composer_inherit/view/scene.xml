@@ -54,6 +54,7 @@
                                 <field name="clip_mp3_url" widget="audio_player"/>
                                 <field name="clip_mp3_vocal" invisible="lip_sync == False"/>
                                 <field name="clip_mp3_vocal_url" widget="audio_player" invisible="lip_sync == False"/>
+                                <button name="separate_vocal" type="object" string="Separate Vocal"/>
                             </group>
                         </group>
                     </page>
