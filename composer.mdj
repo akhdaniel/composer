@@ -380,24 +380,6 @@
 										},
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAGasL2teI0pRCw=",
-											"_parent": {
-												"$ref": "AAAAAAGartRoolf8I+k="
-											},
-											"model": {
-												"$ref": "AAAAAAGasL2tco0mTOs="
-											},
-											"font": "Roboto;13;0",
-											"parentStyle": true,
-											"left": 581,
-											"top": 313,
-											"width": 198.34228515625,
-											"height": 13,
-											"text": "+action_split_song()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
 											"_id": "AAAAAAGaruF5QVrKHHA=",
 											"_parent": {
 												"$ref": "AAAAAAGartRoolf8I+k="
@@ -408,10 +390,28 @@
 											"font": "Roboto;13;0",
 											"parentStyle": true,
 											"left": 581,
-											"top": 328,
+											"top": 313,
 											"width": 198.34228515625,
 											"height": 13,
 											"text": "+action_generate_scenes()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGasL2teI0pRCw=",
+											"_parent": {
+												"$ref": "AAAAAAGartRoolf8I+k="
+											},
+											"model": {
+												"$ref": "AAAAAAGasL2tco0mTOs="
+											},
+											"font": "Roboto;13;0",
+											"parentStyle": true,
+											"left": 581,
+											"top": 328,
+											"width": 198.34228515625,
+											"height": 13,
+											"text": "+action_split_song()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3824,19 +3824,19 @@
 						},
 						{
 							"_type": "UMLOperation",
-							"_id": "AAAAAAGasL2tco0mTOs=",
-							"_parent": {
-								"$ref": "AAAAAAGartRooFfzpI0="
-							},
-							"name": "action_split_song"
-						},
-						{
-							"_type": "UMLOperation",
 							"_id": "AAAAAAGaruF5PFrHllE=",
 							"_parent": {
 								"$ref": "AAAAAAGartRooFfzpI0="
 							},
 							"name": "action_generate_scenes"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGasL2tco0mTOs=",
+							"_parent": {
+								"$ref": "AAAAAAGartRooFfzpI0="
+							},
+							"name": "action_split_song"
 						},
 						{
 							"_type": "UMLOperation",

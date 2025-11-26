@@ -14,11 +14,11 @@ class song(models.Model):
         pass
 
 
-    def action_split_song(self, ):
+    def action_generate_scenes(self, ):
         pass
 
 
-    def action_generate_scenes(self, ):
+    def action_split_song(self, ):
         pass
 
 
