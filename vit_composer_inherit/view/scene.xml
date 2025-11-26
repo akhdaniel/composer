@@ -42,11 +42,12 @@
                             <group string="Video">
                                 <field name="lip_sync" help="Lip sync with audio clips?"/>
                                 <field name="video_prompt"/><button name="generate_video" type="object" string="Generate Image"/>
-                                <field name="video_url" /><button name="download_video" type="object" string="Download Video"/>
-                                <field name="video_mp4" widget="video_player"/>
+                                <field name="video_url" widget="video_player"/><button name="download_video" type="object" string="Download Video"/>
+                                <field name="video_mp4" filename="video_mp4_filename"/>
+                                <field name="video_mp4_filename" invisible="True"/>
                             </group>
                             <group string="Audio">
-                                <field name="clip_mp3"/>
+                                <field name="clip_mp3" filename="clip_mp3_filename"/>
                                 <field name="clip_mp3_filename" invisible="True"/>
                                 <field name="clip_mp3_url" widget="audio_player"/>
                             </group>
