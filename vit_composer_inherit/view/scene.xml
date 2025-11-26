@@ -27,9 +27,10 @@
 
                 <field name="clip_mp3" position="replace"/>
                 <field name="clip_mp3_vocal" position="replace"/>
+                <field name="clip_mp3_vocal_url" position="replace"/>
                 <field name="clip_mp3_filename" position="replace"/>
                 <field name="clip_mp3_url" position="replace"/>
-
+                
                 <notebook position="inside">
                     <page string="Images">
                         <group>
