@@ -20,16 +20,6 @@ class song_clip(models.Model):
         pass
 
 
-    @api.depends("scene_ids")
-    def _get_scene_names(self, ):
-        """
-        {
-        "@api.depends":["scene_ids"]
-        }
-        """
-        pass
-
-
     def action_reload_view(self):
         pass
 

@@ -3029,24 +3029,6 @@
 											"height": 13,
 											"text": "+_get_clip_url()",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAGastUJi8OhYlQ=",
-											"_parent": {
-												"$ref": "AAAAAAGasLv7BoO+LDM="
-											},
-											"model": {
-												"$ref": "AAAAAAGastUJhcOSwFg="
-											},
-											"font": "Roboto;13;0",
-											"parentStyle": true,
-											"left": 469,
-											"top": 856,
-											"width": 149.71923828125,
-											"height": 13,
-											"text": "+_get_scene_names()",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Roboto;13;0",
@@ -3054,7 +3036,7 @@
 									"left": 464,
 									"top": 836,
 									"width": 159.71923828125,
-									"height": 38
+									"height": 23
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -4354,15 +4336,6 @@
 							},
 							"name": "_get_clip_url",
 							"documentation": "{\n\"@api.depends\":[\"clip_mp3\"]\n}"
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGastUJhcOSwFg=",
-							"_parent": {
-								"$ref": "AAAAAAGasLv6/IO1bYM="
-							},
-							"name": "_get_scene_names",
-							"documentation": "{\n\"@api.depends\":[\"scene_ids\"]\n}"
 						}
 					]
 				},
