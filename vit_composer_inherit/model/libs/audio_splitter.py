@@ -15,31 +15,30 @@ class AudioSplitterBase64:
         self.audio = AudioSegment.from_file(io.BytesIO(audio_bytes))
 
     def split(self):
-        """
-        Returns: list of Base64 strings (10s chunks)
-        """
         chunk_ms = self.chunk_length * 1000
         total_length = len(self.audio)
         total_chunks = math.ceil(total_length / chunk_ms)
 
-        chunk_base64_list = []
+        chunk_list = []
 
         for i in range(total_chunks):
             start = i * chunk_ms
             end = min((i + 1) * chunk_ms, total_length)
             chunk = self.audio[start:end]
 
-            # Export chunk to memory buffer
-            buffer = io.BytesIO()
-            chunk.export(buffer, format="mp3")
-            buffer.seek(0)
+            chunk_list.append(self.audio_to_base64(chunk))
 
-            # Convert buffer → Base64 string
-            b64 = base64.b64encode(buffer.read()).decode("utf-8")
-            chunk_base64_list.append(b64)
+        return chunk_list
 
-        return chunk_base64_list
-    
+    # -------------------------------------------------------
+    # 🔹 Convert AudioSegment → Base64
+    # -------------------------------------------------------
+    def audio_to_base64(self, segment, format="mp3"):
+        buffer = io.BytesIO()
+        segment.export(buffer, format=format)
+        buffer.seek(0)
+        return base64.b64encode(buffer.read()).decode("utf-8")
+        
     # -------------------------------------------------------
     # 🔹 NEW: Extract audio by start–end range (in seconds)
     # -------------------------------------------------------
