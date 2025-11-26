@@ -43,7 +43,7 @@ class scene(models.Model):
             reference_image_url=ref_image)
         
         self.image_url = image_url
-        self.download_wavespeed_result(self.image_url)
+        self.download_wavespeed_result(self.image_url, 'image_png', 'png')
 
 
     def action_generate_video(self, ):
@@ -64,22 +64,23 @@ class scene(models.Model):
             reference_image_url=ref_image)
         
         self.video_url = video_url
-        self.download_wavespeed_result(self.video_url)
+        self.download_wavespeed_result(self.video_url, 'video_mp4', 'mp4')
 
 
-    def download_wavespeed_result(self, result_url, field_name):
+    def download_wavespeed_result(self, result_url, field_name, ext):
         for rec in self:
             if not result_url:
                 continue
 
             try:
+                filename = f"{self.name}.{ext}"
                 response = requests.get(result_url, timeout=10)
                 if response.status_code == 200:
                     # response.content sudah berupa bytes
                     rec.write({
-                        field_name: base64.b64encode(response.content)
+                        field_name: base64.b64encode(response.content),
+                        f"{field_name}_filename": filename
                     })
-                    # rec[field_name] = base64.b64encode(response.content)
                 else:
                     # optional: log error / raise warning
                     raise UserError(
