@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Optional: Install Spleeter CLI binary
-RUN curl -L -o spleeter.tar.gz https://github.com/deezer/spleeter/releases/download/2.3.2/spleeter-2.3.2.tar.gz \
+RUN curl -L -o spleeter.tar.gz https://github.com/deezer/spleeter/releases/download/2.3.0/spleeter-2.3.0.tar.gz \
     && tar -xvf spleeter.tar.gz \
     && mv spleeter /usr/local/bin/spleeter \
     && chmod +x /usr/local/bin/spleeter \
