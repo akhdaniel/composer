@@ -57,9 +57,11 @@
                 <field name="scenes_zip" position="replace"/>
                 <page name="scene_ids" position="inside">
                     <group>
-                        <field name="scenes_zip"/>
-                        <button name="action_download_scenes" string="Download Scenes"/>
+                        <field name="scenes_zip"/>                    
                     </group>
+                    <button name="action_download_scenes" string="Download Scenes"/>
+                    <button name="action_download_song" string="Download Song"/>
+                    <button name="action_download_song_clips" string="Download Song Clips"/>                        
                 </page>
 
                 <!-- <field name="song_clips_zip" position="replace"/>
