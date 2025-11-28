@@ -59,8 +59,8 @@
                     <group>
                         <field name="scenes_zip"/>                    
                     </group>
-                    <button name="action_download_scenes" type="object" string="Download Scenes"/>
-                    <button name="action_download_song" type="object" string="Download Song"/>
+                    <button name="action_download_scenes" type="object" string="Download Scenes" class="mr-2"/>
+                    <button name="action_download_song" type="object" string="Download Song" class="mr-2"/>
                     <button name="action_download_song_clips" type="object" string="Download Song Clips"/>                        
                 </page>
 
