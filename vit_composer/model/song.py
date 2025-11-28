@@ -57,8 +57,10 @@ class song(models.Model):
     song_mp3_url = fields.Char(compute="_get_song_url",  string=_("Song Mp3 Url"))
     song_clips_zip = fields.Binary( string=_("Song Clips Zip"))
     song_clips_zip_filename = fields.Char( string=_("Song Clips Zip Filename"))
-    scenes_zip = fields.Binary( string=_("Scenes Zip"))
-    scenes_zip_filename = fields.Char( string=_("Scenes Zip Filename"))
+    scene_images_zip = fields.Binary( string=_("Scene Images Zip"))
+    scene_images_zip_filename = fields.Char( string=_("Scene Images Zip Filename"))
+    scene_videos_zip = fields.Binary( string=_("Scene Videos Zip"))
+    scene_videos_zip_filename = fields.Char( string=_("Scene Videos Zip Filename"))
 
 
     def copy(self, default=None):
@@ -69,6 +71,6 @@ class song(models.Model):
         return super(song, self).copy(default)
 
     gpt_model_id = fields.Many2one(comodel_name="vit.gpt_model",  string=_("Gpt Model"))
+    scene_prompt_id = fields.Many2one(comodel_name="vit.prompt",  string=_("Scene Prompt"))
     scene_ids = fields.One2many(comodel_name="vit.scene",  inverse_name="song_id",  string=_("Scene"))
     actor_ids = fields.One2many(comodel_name="vit.actor",  inverse_name="song_id",  string=_("Actor"))
-    scene_prompt_id = fields.Many2one(comodel_name="vit.prompt",  string=_("Scene Prompt"))

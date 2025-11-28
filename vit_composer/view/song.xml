@@ -11,8 +11,8 @@
                     <field name="name" /> <!-- 100-->
                     <field name="gpt_model_id" /> <!-- 100-->
                     <field name="prompt" /> <!-- 101-->
+                    <field name="scene_prompt_id" /> <!-- 101-->
                     <field name="duration" /> <!-- 103-->
-                    <field name="scene_prompt_id" /> <!-- 103-->
                     <field name="song_mp3_url" /> <!-- 107-->
                 </list>
             </field>
@@ -68,8 +68,10 @@
                                 <field name="song_mp3_url"  />
                                 <field name="song_clips_zip" filename="song_clips_zip_filename" />
                                 <field name="song_clips_zip_filename" invisible="True" />
-                                <field name="scenes_zip" filename="scenes_zip_filename" />
-                                <field name="scenes_zip_filename" invisible="True" />
+                                <field name="scene_images_zip" filename="scene_images_zip_filename" />
+                                <field name="scene_images_zip_filename" invisible="True" />
+                                <field name="scene_videos_zip" filename="scene_videos_zip_filename" />
+                                <field name="scene_videos_zip_filename" invisible="True" />
                             </group>
                             <group> <!-- right -->
                                 <field name="gpt_model_id"  />
@@ -129,8 +131,10 @@
                     <filter string="Song Mp3 Filename" name="filter_by_song_mp3_filename" domain="[('song_mp3_filename','=','')]" />
                     <filter string="Song Clips Zip" name="filter_by_song_clips_zip" domain="[('song_clips_zip','=','')]" />
                     <filter string="Song Clips Zip Filename" name="filter_by_song_clips_zip_filename" domain="[('song_clips_zip_filename','=','')]" />
-                    <filter string="Scenes Zip" name="filter_by_scenes_zip" domain="[('scenes_zip','=','')]" />
-                    <filter string="Scenes Zip Filename" name="filter_by_scenes_zip_filename" domain="[('scenes_zip_filename','=','')]" />
+                    <filter string="Scene Images Zip" name="filter_by_scene_images_zip" domain="[('scene_images_zip','=','')]" />
+                    <filter string="Scene Images Zip Filename" name="filter_by_scene_images_zip_filename" domain="[('scene_images_zip_filename','=','')]" />
+                    <filter string="Scene Videos Zip" name="filter_by_scene_videos_zip" domain="[('scene_videos_zip','=','')]" />
+                    <filter string="Scene Videos Zip Filename" name="filter_by_scene_videos_zip_filename" domain="[('scene_videos_zip_filename','=','')]" />
                     <field name="name" select="True"/>
                     <field name="prompt" select="True"/>
                     <field name="lyrics" select="True"/>
@@ -140,8 +144,10 @@
                     <field name="song_mp3_filename" select="True"/>
                     <field name="song_clips_zip" select="True"/>
                     <field name="song_clips_zip_filename" select="True"/>
-                    <field name="scenes_zip" select="True"/>
-                    <field name="scenes_zip_filename" select="True"/>
+                    <field name="scene_images_zip" select="True"/>
+                    <field name="scene_images_zip_filename" select="True"/>
+                    <field name="scene_videos_zip" select="True"/>
+                    <field name="scene_videos_zip_filename" select="True"/>
                     <field name="gpt_model_id" select="True"/>
                     <field name="scene_prompt_id" select="True"/>
                     <group string="Group By..">

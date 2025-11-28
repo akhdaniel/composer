@@ -56,11 +56,18 @@
                             <p class="m-0" t-field="doc.song_clips_zip_filename" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
-                            <strong>Scenes Zip</strong>
+                            <strong>Scene Images Zip</strong>
                         </div>
                         <div class="col-auto mw-100 mb-2">
-                            <strong>Scenes Zip Filename</strong>
-                            <p class="m-0" t-field="doc.scenes_zip_filename" />
+                            <strong>Scene Images Zip Filename</strong>
+                            <p class="m-0" t-field="doc.scene_images_zip_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Scene Videos Zip</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Scene Videos Zip Filename</strong>
+                            <p class="m-0" t-field="doc.scene_videos_zip_filename" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
                             <strong>Gpt Model</strong>
