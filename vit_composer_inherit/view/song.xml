@@ -54,13 +54,18 @@
                     </page> -->
                 </xpath>
 
-                <field name="scenes_zip" position="replace"/>
+                <field name="scene_images_zip" position="replace"/>
+                <field name="scene_videos_zip" position="replace"/>
+                <field name="song_clips_zip" position="replace"/>
                 <page name="scene_ids" position="inside">
                     <group>
-                        <field name="scenes_zip"/>                    
+                        <field name="scene_images_zip"/>                    
+                        <field name="scenes_videos_zip"/>                    
+                        <field name="song_clips_zip"/>                    
                     </group>
                     <button name="action_download_scene_images" type="object" string="Download Scene Images" class="mr-2"/>
                     <button name="action_download_scene_videos" type="object" string="Download Scene Videos" class="mr-2"/>
+                    <button name="action_download_song_clips" type="object" string="Download Song Clips" class="mr-2"/>
                     <button name="action_download_song" type="object" string="Download Song" class="mr-2"/>
                     <button name="action_download_song_clips" type="object" string="Download Song Clips"/>                        
                 </page>
