@@ -203,3 +203,10 @@ class song(models.Model):
 
     def action_generate_scene_videos(self, ):
         pass
+
+    def action_download_song(self):
+        return {
+            "type": "ir.actions.act_url",
+            "url": f"/web/content/vit.song/{self.id}/song_mp3/{self.song_mp3_filename}",
+            "target": "self",
+        }        
