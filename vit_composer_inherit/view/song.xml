@@ -60,7 +60,7 @@
                 <page name="scene_ids" position="inside">
                     <group>
                         <field name="scene_images_zip"/>                    
-                        <field name="scenes_videos_zip"/>                    
+                        <field name="scene_videos_zip"/>                    
                         <field name="song_clips_zip"/>                    
                     </group>
                     <button name="action_download_scene_images" type="object" string="Download Scene Images" class="mr-2"/>
