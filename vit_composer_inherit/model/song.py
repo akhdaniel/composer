@@ -171,25 +171,23 @@ class song(models.Model):
     #     }
 
     def zip_scenes(self, fieldname):
-        # collect all clips
-        records = self.scene_ids
 
         # define a file name inside zip
         if '_png' in fieldname:
-            filename = f"{self.name}.png"
             zip_filename = f"{self.name}-scene-images.zip"
             binary_fieldname= 'scene_images_zip'
         elif '_mp3' in fieldname:
-            filename = f"{self.name}.mp3"
             zip_filename = f"{self.name}-scene-songs.zip"
             binary_fieldname= 'song_clips_zip'
         elif '_mp4' in fieldname:
-            filename = f"{self.name}.mp4"
             zip_filename = f"{self.name}-scene-videos.zip"
             binary_fieldname= 'scene_videos_zip'
 
         # create in-memory zip
         zip_buffer = io.BytesIO()
+
+        # collect all clips
+        records = self.scene_ids
 
         with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zipf:
             for rec in records:
@@ -197,6 +195,12 @@ class song(models.Model):
                     # get binary data
                     data = base64.b64decode(rec[fieldname])
                     # write inside ZIP
+                    if '_png' in fieldname:
+                        filename = f"{rec.name}.png"
+                    elif '_mp3' in fieldname:
+                        filename = f"{rec.name}.mp3"
+                    elif '_mp4' in fieldname:
+                        filename = f"{rec.name}.mp4"
                     zipf.writestr(filename, data)
 
         # prepare zip for download
@@ -210,7 +214,7 @@ class song(models.Model):
         # force download using ir.actions.act_url
         return {
             "type": "ir.actions.act_url",
-            "url": f"/web/content/vit.song/{self.id}/scenes_zip/{zip_filename}",
+            "url": f"/web/content/vit.song/{self.id}/{binary_fieldname}/{zip_filename}",
             "target": "self",
         }
 
