@@ -59,9 +59,12 @@
                 <field name="song_clips_zip" position="replace"/>
                 <page name="scene_ids" position="inside">
                     <group>
-                        <field name="scene_images_zip"/>                    
-                        <field name="scene_videos_zip"/>                    
-                        <field name="song_clips_zip"/>                    
+                        <field name="scene_images_zip" filename="scene_images_zip_filename"/>
+                        <field name="scene_images_zip_filename" invisible="True"/>                    
+                        <field name="scene_videos_zip" filename="scene_videos_zip_filename"/>                    
+                        <field name="scene_videos_zip_filename" invisible="True"/>                    
+                        <field name="song_clips_zip" filename="song_clips_zip_filename"/>
+                        <field name="song_clips_zip_filename" invisible="True"/>                    
                     </group>
                     <button name="action_download_scene_images" type="object" string="Download Scene Images" class="btn btn-secondary me-2"/>
                     <button name="action_download_scene_videos" type="object" string="Download Scene Videos" class="btn btn-secondary me-2"/>

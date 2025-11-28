@@ -177,7 +177,7 @@ class song(models.Model):
             zip_filename = f"{self.name}-scene-images.zip"
             binary_fieldname= 'scene_images_zip'
         elif '_mp3' in fieldname:
-            zip_filename = f"{self.name}-scene-songs.zip"
+            zip_filename = f"{self.name}-scene-song-clips.zip"
             binary_fieldname= 'song_clips_zip'
         elif '_mp4' in fieldname:
             zip_filename = f"{self.name}-scene-videos.zip"
