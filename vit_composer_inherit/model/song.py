@@ -240,6 +240,6 @@ class song(models.Model):
 
         return {
             "type": "ir.actions.act_url",
-            "url": f"/web/content/vit.song/{self.id}/song_mp3/{self.song_mp3_filename}",
-            "target": "new",
+            "url": f"/web/content/vit.song/{self.id}/song_mp3_zip/{self.song_mp3_zip_filename}",
+            "target": "self",
         }        
