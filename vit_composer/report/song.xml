@@ -70,6 +70,13 @@
                             <p class="m-0" t-field="doc.scene_videos_zip_filename" />
                         </div>
                         <div class="col-auto mw-100 mb-2">
+                            <strong>Song Mp3 Zip</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Song Mp3 Zip Filename</strong>
+                            <p class="m-0" t-field="doc.song_mp3_zip_filename" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
                             <strong>Gpt Model</strong>
                             <p class="m-0" t-field="doc.gpt_model_id"/>
                         </div>

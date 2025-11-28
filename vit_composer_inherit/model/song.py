@@ -223,8 +223,23 @@ class song(models.Model):
         pass
 
     def action_download_song(self):
+        zip_buffer = io.BytesIO()
+        zip_filename = f"{self.name}-full-song.zip"
+        with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zipf:
+            filename = self.song_mp3_filename
+            data = data = base64.b64decode(self.song_mp3)
+            zipf.writestr(filename, data)
+
+        zip_data = zip_buffer.getvalue()
+        zip_b64 = base64.b64encode(zip_data)
+        self.write({
+            'song_mp3_zip': zip_b64,
+            f"song_mp3_zip_filename" : zip_filename
+        })
+
+
         return {
             "type": "ir.actions.act_url",
             "url": f"/web/content/vit.song/{self.id}/song_mp3/{self.song_mp3_filename}",
-            "target": "self",
+            "target": "new",
         }        

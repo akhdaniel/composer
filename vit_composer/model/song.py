@@ -61,6 +61,8 @@ class song(models.Model):
     scene_images_zip_filename = fields.Char( string=_("Scene Images Zip Filename"))
     scene_videos_zip = fields.Binary( string=_("Scene Videos Zip"))
     scene_videos_zip_filename = fields.Char( string=_("Scene Videos Zip Filename"))
+    song_mp3_zip = fields.Binary( string=_("Song Mp3 Zip"))
+    song_mp3_zip_filename = fields.Char( string=_("Song Mp3 Zip Filename"))
 
 
     def copy(self, default=None):

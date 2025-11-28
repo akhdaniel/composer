@@ -72,6 +72,8 @@
                                 <field name="scene_images_zip_filename" invisible="True" />
                                 <field name="scene_videos_zip" filename="scene_videos_zip_filename" />
                                 <field name="scene_videos_zip_filename" invisible="True" />
+                                <field name="song_mp3_zip" filename="scene_videos_zip_filename" />
+                                <field name="song_mp3_zip_filename" invisible="True" />
                             </group>
                             <group> <!-- right -->
                                 <field name="gpt_model_id"  />
@@ -135,6 +137,8 @@
                     <filter string="Scene Images Zip Filename" name="filter_by_scene_images_zip_filename" domain="[('scene_images_zip_filename','=','')]" />
                     <filter string="Scene Videos Zip" name="filter_by_scene_videos_zip" domain="[('scene_videos_zip','=','')]" />
                     <filter string="Scene Videos Zip Filename" name="filter_by_scene_videos_zip_filename" domain="[('scene_videos_zip_filename','=','')]" />
+                    <filter string="Song Mp3 Zip" name="filter_by_song_mp3_zip" domain="[('song_mp3_zip','=','')]" />
+                    <filter string="Song Mp3 Zip Filename" name="filter_by_song_mp3_zip_filename" domain="[('song_mp3_zip_filename','=','')]" />
                     <field name="name" select="True"/>
                     <field name="prompt" select="True"/>
                     <field name="lyrics" select="True"/>
@@ -148,6 +152,8 @@
                     <field name="scene_images_zip_filename" select="True"/>
                     <field name="scene_videos_zip" select="True"/>
                     <field name="scene_videos_zip_filename" select="True"/>
+                    <field name="song_mp3_zip" select="True"/>
+                    <field name="song_mp3_zip_filename" select="True"/>
                     <field name="gpt_model_id" select="True"/>
                     <field name="scene_prompt_id" select="True"/>
                     <group string="Group By..">
