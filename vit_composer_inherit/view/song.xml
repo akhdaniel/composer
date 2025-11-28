@@ -66,8 +66,7 @@
                     <button name="action_download_scene_images" type="object" string="Download Scene Images" class="btn btn-secondary me-2"/>
                     <button name="action_download_scene_videos" type="object" string="Download Scene Videos" class="btn btn-secondary me-2"/>
                     <button name="action_download_song_clips" type="object" string="Download Song Clips" class="btn btn-secondary me-2"/>
-                    <button name="action_download_song" type="object" string="Download Song" class="btn btn-secondary me-2"/>
-                    <button name="action_download_song_clips" type="object" string="Download Song Clips" class="btn btn-secondary me-2"/>
+                    <button name="action_download_song" type="object" string="Download Full Song" class="btn btn-secondary me-2"/>
                 </page>
 
                 <!-- <field name="song_clips_zip" position="replace"/>
