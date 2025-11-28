@@ -176,15 +176,15 @@ class song(models.Model):
 
         # define a file name inside zip
         if '_png' in fieldname:
-            filename = f"{rec.name}.png"
+            filename = f"{self.name}.png"
             zip_filename = f"{self.name}-scene-images.zip"
             binary_fieldname= 'scene_images_zip'
         elif '_mp3' in fieldname:
-            filename = f"{rec.name}.mp3"
+            filename = f"{self.name}.mp3"
             zip_filename = f"{self.name}-scene-songs.zip"
             binary_fieldname= 'song_clips_zip'
         elif '_mp4' in fieldname:
-            filename = f"{rec.name}.mp4"
+            filename = f"{self.name}.mp4"
             zip_filename = f"{self.name}-scene-videos.zip"
             binary_fieldname= 'scene_videos_zip'
 
